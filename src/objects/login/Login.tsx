@@ -44,7 +44,7 @@ class Login {
 //     console.log("Apa");
 // };
 
-export { Login };
+export default Login;
 
 
 

@@ -25,7 +25,7 @@ class Menu extends React.Component<IProps> {
     public createMenu(menuButtons: ClickEvent[]) {
         const MenuElement =
             menuButtons.map((item: ClickEvent) => {
-                return (<MenuButton text={item.name} action={item.eventHandler} key={item.name} id={item.name} />);
+                return (<MenuButton clickEvent={item} key={item.name} id={item.name} />);
             })
 
         return (<ul> {MenuElement} </ul>);

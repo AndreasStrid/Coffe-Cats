@@ -1,29 +1,21 @@
 import * as React from 'react';
 import '../App.css'
+import ClickEvent from '../objects/ClickEvent'
 
 interface IProps {
-    text: string;
+    clickEvent: ClickEvent;
     id: string;
-    action(e: React.MouseEvent<HTMLElement>): void;
 }
-
 
 class MenuButton extends React.Component<IProps>{
 
     constructor(props: IProps) {
         super(props);
-        this.handleClick = this.handleClick.bind(this);
     }
 
     public render() {
-        return (<li onClick={this.props.action}> {this.props.text} </li>);
+        return (<li onClick={this.props.clickEvent.eventHandler}> {this.props.clickEvent.name} </li>);
     }
-
-    public handleClick(e: React.MouseEvent<HTMLElement>) {
-        // tslint:disable-next-line:no-console
-        console.log("Click on: " + this.props.text);
-    }
-
 }
 
 export default MenuButton;
