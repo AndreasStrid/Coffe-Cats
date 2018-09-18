@@ -1,11 +1,12 @@
 import * as React from 'react';
+// import { Route, Router } from 'react-router';
 import './App.css';
 
 // import Box from './components/Box';
 import Menu from './components/menu/Menu';
 import Navbar from './components/navigation/NavBar'
 import Page from './components/Page'
-import { HOMEPAGE, PAGESNAMES } from './config/Variables';
+import { ABOUTPAGE, BOOKINGPAGE, HOMEPAGE, NAVBARCLICKEVENTS, PAGESNAMES } from './config/Pages';
 import PageTemplate from './objects/PageTemplate'
 
 
@@ -18,21 +19,30 @@ import PageTemplate from './objects/PageTemplate'
 class App extends React.Component {
 
   public pageRenderer(pageSelected: string): PageTemplate {
-    if (pageSelected === PAGESNAMES.homePage.name) {
+    if (pageSelected === PAGESNAMES.homePage.url) {
       return HOMEPAGE;
     }
-    else if (pageSelected === PAGESNAMES.aboutPage.name) {
-      return HOMEPAGE;
+    else if (pageSelected === PAGESNAMES.aboutPage.url) {
+      return ABOUTPAGE;
     }
-    else if (pageSelected === PAGESNAMES.bookingPage.name) {
-      return HOMEPAGE;
+    else if (pageSelected === PAGESNAMES.bookingPage.url) {
+      return BOOKINGPAGE;
     }
-    return HOMEPAGE;
+    return new PageTemplate('', '', []);
   }
 
   public render() {
 
-    const page = this.pageRenderer(PAGESNAMES.homePage.name);
+    const page = this.pageRenderer(document.location.pathname);
+
+    // <BrowserRouter>
+    //   <div>
+    //     <Header />
+    //     <Route exact={true} path="/" component={Landing} />
+    //     <Route exact={true} path="/surveys" component={Dashboard} />
+    //     <Route path="/surveys/new" copmonent={SurveyNew} />
+    //   </div>
+    // </BrowserRouter>
 
     return (
 
@@ -43,7 +53,7 @@ class App extends React.Component {
         </div>
         <div className="navBarGrid">
           <p>Navbar</p>
-          <Navbar />
+          <Navbar navBarButtons={NAVBARCLICKEVENTS} />
         </div>
         <div className="contentGrid">
           <p> Home Page</p>
