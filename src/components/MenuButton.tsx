@@ -4,6 +4,7 @@ import '../App.css'
 interface IProps {
     text: string;
     id: string;
+    action(e: React.MouseEvent<HTMLElement>): void;
 }
 
 
@@ -15,7 +16,7 @@ class MenuButton extends React.Component<IProps>{
     }
 
     public render() {
-        return (<li onClick={this.handleClick}> {this.props.text} </li>);
+        return (<li onClick={this.props.action}> {this.props.text} </li>);
     }
 
     public handleClick(e: React.MouseEvent<HTMLElement>) {

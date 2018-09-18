@@ -1,9 +1,15 @@
 import * as React from 'react';
 import '../../App.css'
+import ClickEvent from '../../objects/ClickEvent';
 import MenuButton from '../MenuButton';
 
+
 interface IProps {
-    menuButtons: string[];
+    menuButtons: ClickEvent[];
+    // menuButtons: string[];
+    // funci: ((e: React.MouseEvent<HTMLElement>) => void)[];
+    // funci: Array<((e: React.MouseEvent<HTMLElement>) => void)>;
+    // funci: Array<(<T>(arg1: T) => any)>;
 }
 
 // const staticValues = { login: { name: 'Login', event: MenuButton.handleClick } };
@@ -16,10 +22,10 @@ class Menu extends React.Component<IProps> {
         </div>);
     }
 
-    public createMenu(menuButtons: string[]) {
+    public createMenu(menuButtons: ClickEvent[]) {
         const MenuElement =
-            menuButtons.map((item: string) => {
-                return (<MenuButton text={item} key={item} id={item} />);
+            menuButtons.map((item: ClickEvent) => {
+                return (<MenuButton text={item.name} action={item.eventHandler} key={item.name} id={item.name} />);
             })
 
         return (<ul> {MenuElement} </ul>);
