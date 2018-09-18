@@ -5,7 +5,7 @@ import './App.css';
 // import Box from './components/Box';
 import Menu from './components/menu/Menu';
 import Navbar from './components/navigation/NavBar'
-import Page from './components/PageContent'
+import PageContent from './components/PageContent'
 import { ABOUTPAGE, BOOKINGPAGE, HOMEPAGE, NAVBARCLICKEVENTS, PAGESNAMES } from './config/Pages';
 import PageTemplate from './objects/PageTemplate'
 
@@ -38,17 +38,17 @@ class App extends React.Component {
     return (
 
       <div className="appGrid">
-        <div className="menuGrid">
-          <p> Menu </p>
-          <Menu menuButtons={page.menuItems} />
-        </div>
         <div className="navBarGrid">
           <p>Navbar</p>
           <Navbar navBarButtons={NAVBARCLICKEVENTS} />
         </div>
+        <div className="menuGrid">
+          <p> Menu </p>
+          <Menu menuButtons={page.menuItems} />
+        </div>
         <div className="contentGrid">
           <p> Home Page</p>
-          <Page />
+          <PageContent />
         </div>
       </div>
 

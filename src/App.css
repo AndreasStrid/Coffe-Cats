@@ -1,3 +1,5 @@
+@import "GridLayout.css";
+
 :root {
   /* Colors */
   --primary: #dddddd;
@@ -12,7 +14,7 @@
   --page: rgb(85, 211, 63);
   --homePage: rgb(231, 22, 22);
   /* Width & Heights */
-  --menuWidth: 400px;
+  --menuWidth: 300px;
   --navBarHeight: 100px;
 }
 
@@ -51,44 +53,4 @@ body {
 
 img {
   max-width: 100%;
-}
-
-.appGrid {
-  display: grid;
-  height: inherit;
-  width: inherit;
- 
- /* grid-template-columns: auto auto;
-  grid-template-rows: auto auto; */
-  grid-template-areas: "menuGrid navBarGrid"
-                         "menuGrid pageGrid"
-                         ;
-  background: #fafa
-
-}
-
-.menuGrid{
-    grid-area: menuGrid;
-    background: var(--background);
-    height: 100vh;
-    width: var(--menuWidth);
-    
-    border: 2px solid var(--menu);
-}
-
-.contentGrid{
-  grid-area: pageGrid;
-  background: var(--background);
-  height: calc(100vh - var(--navBarHeight)); 
-  width: (100vw- var(--menuWidth));
-  
-  border: 2px solid var(--page);
-}
-
-.navBarGrid{
-  grid-area: navBarGrid;
-  background: var(--background);
-  height: var(--navBarHeight);
-  width: calc(100vw - var(--menuWidth));
-  border: 2px solid var(--navbar);
 }

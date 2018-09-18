@@ -11,10 +11,10 @@ class Navbar extends React.Component<IProps> {
 
     public render() {
         return (<div className="navbar">
-            {this.createList(this.props.list)}
+            {this.createItemList(this.props.list)}
         </div>);
     }
-    public createList(list: ClickEvent[]) {
+    public createItemList(list: ClickEvent[]) {
         const listElement =
             list.map((item: ClickEvent) => {
                 return (<ListItem clickEvent={item} key={item.name} id={item.name} />);

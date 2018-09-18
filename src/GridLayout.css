@@ -1,0 +1,41 @@
+.appGrid {
+  grid-area: appGrid;
+  display: grid;
+  height: inherit;
+  width: inherit;
+ 
+ /* grid-template-columns: auto auto;
+  grid-template-rows: auto auto; */
+  grid-template-areas: "navBarGrid navBarGrid"
+                         "menuGrid contentGrid";
+  background: #fafa
+
+}
+
+.menuGrid{
+    grid-area: menuGrid;
+    background: var(--background);
+    height: calc(100vh - var(--navBarHeight));
+    width: var(--menuWidth);
+    /* width: 100px; */
+    
+    border: 2px solid var(--menu);
+}
+
+.contentGrid{
+  grid-area: contentGrid;
+  background: var(--background);
+  height: calc(100vh - var(--navBarHeight)); 
+  width: calc(100vw - var(--menuWidth));
+  /* width: 200px; */
+  
+  border: 2px solid var(--page);
+}
+
+.navBarGrid{
+  grid-area: navBarGrid;
+  background: var(--background);
+  height: var(--navBarHeight);
+  width: 100vw;
+  border: 2px solid var(--navbar);
+}
