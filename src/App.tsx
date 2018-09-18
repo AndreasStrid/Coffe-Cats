@@ -5,7 +5,7 @@ import './App.css';
 // import Box from './components/Box';
 import Menu from './components/menu/Menu';
 import Navbar from './components/navigation/NavBar'
-import Page from './components/Page'
+import Page from './components/PageContent'
 import { ABOUTPAGE, BOOKINGPAGE, HOMEPAGE, NAVBARCLICKEVENTS, PAGESNAMES } from './config/Pages';
 import PageTemplate from './objects/PageTemplate'
 
@@ -34,15 +34,6 @@ class App extends React.Component {
   public render() {
 
     const page = this.pageRenderer(document.location.pathname);
-
-    // <BrowserRouter>
-    //   <div>
-    //     <Header />
-    //     <Route exact={true} path="/" component={Landing} />
-    //     <Route exact={true} path="/surveys" component={Dashboard} />
-    //     <Route path="/surveys/new" copmonent={SurveyNew} />
-    //   </div>
-    // </BrowserRouter>
 
     return (
 

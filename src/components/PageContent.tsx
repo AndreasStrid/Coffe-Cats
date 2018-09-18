@@ -5,7 +5,7 @@ import './Components.css';
 
 
 
-class Page extends React.Component {
+class PageContent extends React.Component {
 
     public render() {
         return (
@@ -25,4 +25,4 @@ class Page extends React.Component {
     }
 }
 
-export default Page;
+export default PageContent;

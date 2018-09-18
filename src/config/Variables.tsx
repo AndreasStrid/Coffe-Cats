@@ -4,4 +4,8 @@ const PAGESNAMES = {
     homePage: { name: 'Home', url: '/homePage' }
 };
 
+// funci: ((e: React.MouseEvent<HTMLElement>) => void)[];
+// funci: Array<((e: React.MouseEvent<HTMLElement>) => void)>;
+// funci: Array<(<T>(arg1: T) => any)>;
+
 export { PAGESNAMES };
