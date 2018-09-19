@@ -15,7 +15,8 @@
 .menuGrid{
     grid-area: menuGrid;
     background: var(--background);
-    height: calc(100vh - var(--navBarHeight));
+    /* height: calc(100vh - var(--navBarHeight)); */
+    height: 100%;
     width: var(--menuWidth);
     /* width: 100px; */
     
@@ -25,11 +26,15 @@
 .contentGrid{
   grid-area: contentGrid;
   background: var(--background);
-  height: calc(100vh - var(--navBarHeight)); 
+  /* height: calc(100vh - var(--navBarHeight));  */
+  height: 100%;
   width: calc(100vw - var(--menuWidth));
   /* width: 200px; */
-  
+  display: grid;
+  grid-template-rows: auto;
+
   border: 2px solid var(--page);
+  overflow: hidden;
 }
 
 .navBarGrid{

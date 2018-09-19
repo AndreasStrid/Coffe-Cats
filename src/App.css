@@ -2,8 +2,8 @@
 
 :root {
   /* Colors */
-  --primary: #dddddd;
-  --background: #dddddd;
+  --background:rgb(206, 209, 212);
+  --componentColor: #ddd;
   --dark: #333;
   --light: #fff;
   --shadow: 0 1px 5px rgba(104,104,104,0.8);
@@ -48,7 +48,6 @@ body {
   color: var(--light);
   padding: 0.6rem 1.3rem;
   text-decoration: none;
-  border: 0;
 }
 
 img {

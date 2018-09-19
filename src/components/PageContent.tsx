@@ -1,8 +1,10 @@
 import * as React from 'react';
 import '../App.css';
-// import Box from './Box';
+// import Box from './Box'; homePage
 import './Components.css';
 
+import * as CAT_IMAGE from '../cat_in_coffecup.jpg';
+import * as COFFE_IMAGE from '../coffe_cat_art.jpg';
 
 
 class PageContent extends React.Component {
@@ -10,18 +12,42 @@ class PageContent extends React.Component {
     public render() {
         return (
             <div className="homePage">
-                <p>1</p>
-                {/*  <Box text="Lorem ipsum dolor sit amet consectetur adipisicing elit. Nemo suscipit eveniet voluptatem beatae voluptatibus, quis labore ab nisi iusto molestiae saepe a dolore qui, sed eos numquam nostrum quam harum!" btn={true} />
-                <Box text="Lorem ipsum dolor sit amet consectetur adipisicing elit. Nemo suscipit eveniet voluptatem beatae voluptatibus, quis labore ab nisi iusto molestiae saepe a dolore qui, sed eos numquam nostrum quam harum! Lorem ipsum dolor sit amet consectetur adipisicing elit. Facere eligendi quisquam molestias odio, voluptatibus, expedita soluta id velit dolor nam reiciendis adipisci corporis? Quaerat eaque, dolore in cupiditate perspiciatis ducimus? " btn={true} />
 
-               
-                <Box text="Lorem !" btn={false} />
-                <Box text="Lorem !" btn={false} />
-                <Box text="Lorem !" btn={false} />
-                <Box text="Lorem !" btn={false} />  
-                */}
+                <div className="topArea">
+                    <h1> All your need is </h1>
+                </div>
 
-            </div>);
+                <div className="apa">
+                    <div className="apa1">
+                        <h1> Cats </h1>
+                        <p> Cats are fluffy, awesome and the reason why the internet exist. Just by looking at their cute faces makes you happy. So you are not buying a pet you are buying happines. In this case renting happines for a reasoniable price </p>
+                    </div>
+                    <div className="apa2">
+                        <img src={CAT_IMAGE} alt="" />
+                    </div>
+                </div>
+
+                <div className="apa">
+                    <div className="apa1">
+                        <h1> Coffe </h1>
+                        <p> Coffe is good, Coffe is warm, Coffie is life, Drink Coffe and you will see your purpose in life</p>
+                    </div>
+                    <div className="apa2">
+                        <img src={COFFE_IMAGE} alt="" />
+                    </div>
+                </div>
+
+
+                <div className="apa">
+                    <div className="apa1">
+                        <h1> Coffe </h1>
+                        <p> Coffe is good, Coffe is warm, Coffie is life, Drink Coffe and you will see your purpose in life</p>
+                    </div>
+                    <div className="apa2">
+                        <img src={COFFE_IMAGE} alt="" />
+                    </div>
+                </div>
+            </div >);
     }
 }
 

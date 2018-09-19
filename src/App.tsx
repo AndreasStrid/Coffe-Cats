@@ -47,7 +47,7 @@ class App extends React.Component {
           <Menu menuButtons={page.menuItems} />
         </div>
         <div className="contentGrid">
-          <p> Home Page</p>
+          <p> PageContent </p>
           <PageContent />
         </div>
       </div>
