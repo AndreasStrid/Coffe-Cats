@@ -1,0 +1,25 @@
+.container{
+    padding: 20px;
+    margin-bottom: 35px;
+    display: grid;
+    grid-template-columns: 50% 50%;
+
+    background: var(--componentColor);
+    box-shadow: var(--shadow);
+    max-height: 251px;
+}
+
+.H1_P {
+    justify-self: left;
+    max-width: 500px;
+
+}
+
+.H1_P h1{
+   margin-left: -4px;
+   margin-top: -11px;
+}
+
+.image {
+    justify-self: right;
+}

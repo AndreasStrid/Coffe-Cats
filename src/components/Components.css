@@ -12,13 +12,12 @@
 .homePage{
     height: inherit;
     width: 1200px;
+    background: var(--background);
+    padding: 50px;
+
     display: grid;
     grid-template-rows: auto; 
     justify-self: center;
-
-    background: var(--background);
-
-    padding: 50px;
 
 }
 
@@ -38,7 +37,6 @@
 
 .topArea {
     color: #abc;
-    /* grid-area: topArea; */
     min-height: 400px;
     background: url('../coffe_and_cats_pls.jpeg');
     background-size: cover;
@@ -60,30 +58,6 @@
     text-decoration-color: var(--light);
 }
 
-.apa{
-    padding: 20px;
-    margin-bottom: 35px;
-    display: grid;
-    grid-template-columns: 50% 50%;
 
-    background: var(--componentColor);
-    box-shadow: var(--shadow);
-    max-height: 251px;
-}
-
-.apa1 {
-    justify-self: left;
-    max-width: 500px;
-
-}
-
-.apa1 h1{
-   margin-left: -4px;
-   margin-top: -11px;
-}
-
-.apa2 {
-    justify-self: right;
-}
 
 

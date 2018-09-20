@@ -14,7 +14,7 @@ class Navbar extends React.Component<IProps> {
             {this.createItemList(this.props.list)}
         </div>);
     }
-    public createItemList(list: ClickEvent[]) {
+    public createItemList(list: ClickEvent[]): JSX.Element {
         const listElement =
             list.map((item: ClickEvent) => {
                 return (<ListItem clickEvent={item} key={item.name} id={item.name} />);

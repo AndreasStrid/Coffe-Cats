@@ -1,54 +1,56 @@
 import * as React from 'react';
-// import { Route, Router } from 'react-router';
 import './App.css';
-
-// import Box from './components/Box';
 import Menu from './components/menu/Menu';
 import Navbar from './components/navigation/NavBar'
-import PageContent from './components/PageContent'
-import { ABOUTPAGE, BOOKINGPAGE, HOMEPAGE, NAVBARCLICKEVENTS, PAGESNAMES } from './config/Pages';
-import PageTemplate from './objects/PageTemplate'
-
-
-// import HomePageHeaderClass from './homePage/HomePageHeaderClass';
-// import HomePageHeaderStateless from './homePage/HomePageHeaderStateless';
-
-// const menuButtons = ['Login', 'Button2', 'Button3'];
-// const menuFunctions = [new Login('login').logIn, new Login('cats').logIn]
+import HomePage from './components/pages/HomePage';
+import { ABOUT_PAGE, BOOKING_PAGE, HOME_PAGE, NAVBAR_CLICK_EVENTS, PAGES } from './config/Pages';
+// import PageTemplate from './objects/PageTemplate'
 
 class App extends React.Component {
 
-  public pageRenderer(pageSelected: string): PageTemplate {
-    if (pageSelected === PAGESNAMES.homePage.url) {
-      return HOMEPAGE;
+  public pageRenderer(pageSelected: string): JSX.Element {
+    if (pageSelected === PAGES.HOME_PAGE.url) {
+      return (<HomePage H1PImageList={HOME_PAGE.H1PImageComponetns} />)
     }
-    else if (pageSelected === PAGESNAMES.aboutPage.url) {
-      return ABOUTPAGE;
+    // else if (pageSelected === PAGES.ABOUT_PAGE.url) {
+    //   return ABOUT_PAGE;
+    // }
+    // else if (pageSelected === PAGES.BOOKING_PAGE.url) {
+    //   return BOOKING_PAGE;
+    // }
+    return <p>dd</p>;
+  }
+
+  public menuRenderer(pageSelected: string): JSX.Element {
+    if (pageSelected === PAGES.HOME_PAGE.url) {
+      return (<Menu menuButtons={HOME_PAGE.menuItems} />)
     }
-    else if (pageSelected === PAGESNAMES.bookingPage.url) {
-      return BOOKINGPAGE;
+    else if (pageSelected === PAGES.BOOKING_PAGE.url) {
+      return (<Menu menuButtons={BOOKING_PAGE.menuItems} />)
     }
-    return new PageTemplate('', '', []);
+    else if (pageSelected === PAGES.ABOUT_PAGE.url) {
+      return (<Menu menuButtons={ABOUT_PAGE.menuItems} />)
+    }
+    return <p>dd</p>;
   }
 
   public render() {
 
-    const page = this.pageRenderer(document.location.pathname);
+    const currentPage = document.location.pathname;
+    const page = this.pageRenderer(currentPage);
+    const menu = this.menuRenderer(currentPage);
 
     return (
-
       <div className="appGrid">
         <div className="navBarGrid">
           <p>Navbar</p>
-          <Navbar navBarButtons={NAVBARCLICKEVENTS} />
+          <Navbar navBarButtons={NAVBAR_CLICK_EVENTS} />
         </div>
         <div className="menuGrid">
-          <p> Menu </p>
-          <Menu menuButtons={page.menuItems} />
+          {menu}
         </div>
         <div className="contentGrid">
-          <p> PageContent </p>
-          <PageContent />
+          {page}
         </div>
       </div>
 

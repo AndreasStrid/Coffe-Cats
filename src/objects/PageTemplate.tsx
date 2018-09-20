@@ -13,6 +13,9 @@ class PageTemplate {
 
         this.redirect = this.redirect.bind(this);
     }
+    set setName(name: string) {
+        this.name = name;
+    }
     public redirect() {
         window.location.replace(this.url);
     }
