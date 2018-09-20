@@ -1,16 +1,16 @@
 import * as React from 'react';
 import './App.css';
-import Menu from './components/menu/Menu';
-import Navbar from './components/navigation/NavBar'
-import HomePage from './components/pages/HomePage';
-import { ABOUT_PAGE, BOOKING_PAGE, HOME_PAGE, NAVBAR_CLICK_EVENTS, PAGES } from './config/Pages';
+import MenuComp from './components/menu/MenuComp';
+import NavbarComp from './components/navigation/NavBarComp'
+import HomePageComp from './components/pages/homePage/HomePageComp';
+import { ABOUT_PAGE, BOOKING_PAGE, HOME_PAGE, NAVBAR_CLICK_EVENTS, PAGES } from './content/Pages';
 // import PageTemplate from './objects/PageTemplate'
 
 class App extends React.Component {
 
   public pageRenderer(pageSelected: string): JSX.Element {
     if (pageSelected === PAGES.HOME_PAGE.url) {
-      return (<HomePage H1PImageList={HOME_PAGE.H1PImageComponetns} />)
+      return (<HomePageComp H1PImageList={HOME_PAGE.H1PImageComponetns} />)
     }
     // else if (pageSelected === PAGES.ABOUT_PAGE.url) {
     //   return ABOUT_PAGE;
@@ -23,13 +23,13 @@ class App extends React.Component {
 
   public menuRenderer(pageSelected: string): JSX.Element {
     if (pageSelected === PAGES.HOME_PAGE.url) {
-      return (<Menu menuButtons={HOME_PAGE.menuItems} />)
+      return (<MenuComp menuButtons={HOME_PAGE.menuItems} />)
     }
     else if (pageSelected === PAGES.BOOKING_PAGE.url) {
-      return (<Menu menuButtons={BOOKING_PAGE.menuItems} />)
+      return (<MenuComp menuButtons={BOOKING_PAGE.menuItems} />)
     }
     else if (pageSelected === PAGES.ABOUT_PAGE.url) {
-      return (<Menu menuButtons={ABOUT_PAGE.menuItems} />)
+      return (<MenuComp menuButtons={ABOUT_PAGE.menuItems} />)
     }
     return <p>dd</p>;
   }
@@ -44,7 +44,7 @@ class App extends React.Component {
       <div className="appGrid">
         <div className="navBarGrid">
           <p>Navbar</p>
-          <Navbar navBarButtons={NAVBAR_CLICK_EVENTS} />
+          <NavbarComp navBarButtons={NAVBAR_CLICK_EVENTS} />
         </div>
         <div className="menuGrid">
           {menu}

@@ -1,14 +1,14 @@
 import * as React from 'react';
 import '../../App.css'
 import ClickEvent from '../../objects/ClickEvent';
-import List from '../List';
+import List from '../list/ListComp';
 
 
 interface IProps {
     menuButtons: ClickEvent[];
 }
 
-class Menu extends React.Component<IProps> {
+class MenuComp extends React.Component<IProps> {
 
     public render() {
         return (<div className="menu">
@@ -17,4 +17,4 @@ class Menu extends React.Component<IProps> {
     }
 }
 
-export default Menu;
+export default MenuComp;

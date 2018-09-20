@@ -1,5 +1,5 @@
-import * as CAT_IMAGE_IMP from '../cat_in_coffecup.jpg';
-import * as COFFE_IMAGE from '../coffe_cat_art.jpg';
+import * as CAT_IMAGE_IMP from './images/cat_in_coffecup.jpg';
+import * as COFFE_IMAGE from './images/coffe_cat_art.jpg';
 
 const PAGES = {
     ABOUT_PAGE: { name: 'ABOUT_PAGE', url: '/about' },

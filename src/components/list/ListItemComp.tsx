@@ -1,13 +1,13 @@
 import * as React from 'react';
-import '../App.css'
-import ClickEvent from '../objects/ClickEvent'
+import '../../App.css'
+import ClickEvent from '../../objects/ClickEvent'
 
 interface IProps {
     clickEvent: ClickEvent;
     id: string;
 }
 
-class ListItem extends React.Component<IProps>{
+class ListItemComp extends React.Component<IProps>{
 
     constructor(props: IProps) {
         super(props);
@@ -18,4 +18,4 @@ class ListItem extends React.Component<IProps>{
     }
 }
 
-export default ListItem;
+export default ListItemComp;

@@ -1,13 +1,13 @@
 import * as React from 'react';
 import '../../App.css'
 import ClickEvent from '../../objects/ClickEvent';
-import List from '../List';
+import List from '../list/ListComp';
 
 interface IProps {
     navBarButtons: ClickEvent[];
 }
 
-class Navbar extends React.Component<IProps> {
+class NavbarComp extends React.Component<IProps> {
 
     public render() {
         return (<div className="menu">
@@ -17,4 +17,4 @@ class Navbar extends React.Component<IProps> {
 
 }
 
-export default Navbar;
+export default NavbarComp;

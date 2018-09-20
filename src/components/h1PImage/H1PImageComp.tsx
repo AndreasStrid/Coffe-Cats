@@ -1,11 +1,11 @@
 import * as React from 'react';
-import '../App.css';
-import './H1PImageContainer.css'
+import '../../App.css';
+import './H1PImageStyle.css'
 
-import H1PImage from './H1PImage';
+import H1PImageObj from './H1PImageObj';
 
 interface IProps {
-    content: H1PImage;
+    content: H1PImageObj;
 }
 
 class H1PImageComp extends React.Component<IProps> {

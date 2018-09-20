@@ -1,4 +1,4 @@
-class H1PImage {
+class H1PImageObj {
 
     public h1: string;
     public p: string;
@@ -11,4 +11,4 @@ class H1PImage {
     }
 }
 
-export default H1PImage;
+export default H1PImageObj;

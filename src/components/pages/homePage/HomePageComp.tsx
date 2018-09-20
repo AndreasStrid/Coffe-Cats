@@ -1,16 +1,15 @@
 import * as React from 'react';
-import '../../App.css';
-import '../Components.css';
+import '../../../App.css';
+import './HomPageStyle.css'
 
-import H1PImage from '../H1PImage';
-import H1PImageComp from '../H1PImageComp';
-
+import H1PImageComp from '../../h1PImage/H1PImageComp';
+import H1PImageObj from '../../h1PImage/H1PImageObj';
 
 interface IProps {
-    H1PImageList: H1PImage[];
+    H1PImageList: H1PImageObj[];
 }
 
-class HomePage extends React.Component<IProps> {
+class HomePageComp extends React.Component<IProps> {
 
     public render() {
         return (
@@ -23,9 +22,9 @@ class HomePage extends React.Component<IProps> {
                 {this.createHomePage(this.props.H1PImageList)}
             </div >);
     }
-    public createHomePage(components: H1PImage[]): JSX.Element {
+    public createHomePage(components: H1PImageObj[]): JSX.Element {
         const H1PImageElements =
-            components.map((component: H1PImage) => {
+            components.map((component: H1PImageObj) => {
                 return (<H1PImageComp content={component} key={component.h1} />);
             })
 
@@ -33,4 +32,4 @@ class HomePage extends React.Component<IProps> {
     }
 }
 
-export default HomePage;
+export default HomePageComp;

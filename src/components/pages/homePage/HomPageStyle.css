@@ -1,0 +1,48 @@
+.homePage{
+    height: inherit;
+    width: 1200px;
+    background: var(--background);
+    padding: 50px;
+
+    display: grid;
+    grid-template-rows: auto; 
+    justify-self: center;
+
+}
+
+.homePage h1 {
+    color: var(--dark);
+    font-size: 42px;
+}
+
+.homePage p {
+    color: var(--dark);
+    font-size: 22px;
+}
+.homePage img {
+    height: 251px;
+    width: 400px;
+}
+
+.topArea {
+    color: #abc;
+    min-height: 400px;
+    background: url('../../../content/images/coffe_and_cats_pls.jpeg');
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    width: inherit;
+    margin-bottom: 70px;
+}
+
+.topArea h1 {
+    margin-top: -10px;
+    padding-left: 20px;
+    font-size: 110px;
+    font-family: "Brush Script MT";
+    margin-bottom: 0;
+    color: var(--light);
+
+    text-decoration: underline;
+    text-decoration-color: var(--light);
+}
