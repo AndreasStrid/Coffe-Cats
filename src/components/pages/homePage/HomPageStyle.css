@@ -1,7 +1,7 @@
 .homePage{
     height: inherit;
     width: inherit;
-    background: var(--background);
+    background: var(--dark);
     /* padding: 50px; */
 
     display: grid;
@@ -11,12 +11,12 @@
 }
 
 .homePage h1 {
-    color: var(--dark);
+    color: var(--light);
     font-size: 42px;
 }
 
 .homePage p {
-    color: var(--dark);
+    color: var(--light);
     font-size: 22px;
 }
 .homePage img {

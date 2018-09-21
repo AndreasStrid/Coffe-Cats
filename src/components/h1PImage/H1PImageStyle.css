@@ -4,7 +4,7 @@
     display: grid;
     grid-template-columns: 50% 50%;
 
-    background: var(--componentColor);
+    background: var(--grey);
     box-shadow: var(--shadow);
     max-height: 251px;
 }
