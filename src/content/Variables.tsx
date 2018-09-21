@@ -2,9 +2,11 @@ import * as CAT_IMAGE_IMP from './images/cat_in_coffecup.jpg';
 import * as COFFE_IMAGE from './images/coffe_cat_art.jpg';
 
 const PAGES = {
-    ABOUT_PAGE: { name: 'ABOUT_PAGE', url: '/about' },
-    BOOKING_PAGE: { name: 'BOOKING_PAGE', url: '/booking' },
-    HOME_PAGE: { name: 'HOME_PAGE', url: '/homePage' }
+    ABOUT_PAGE: { name: 'About', url: '/about' },
+    BOOKING_PAGE: { name: 'Booking', url: '/booking' },
+    HOME_PAGE: { name: 'Home', url: '/home' },
+    LOGIN_PAGE: { name: 'Login', url: '/login' },
+    PROFILE_PAGE: { name: 'Profile', url: '/profile' }
 };
 
 const IMAGES = {
@@ -13,8 +15,31 @@ const IMAGES = {
 
 };
 
+enum ListStyle {
+    MENU = 'menu',
+    NAVBAR = 'navBar'
+}
+
+// enum GridStyle {
+//     APP_GRID= 'appGrid',
+//     NAVBAR_GRID= "navBarGrid",
+//     MENU_GRID = "menuGrid",
+//     CONTENT_GRID= "contentGrid"
+// }
+
+// enum PageStyle {
+//     MENU = 'menu',
+//     NAVBAR = 'navBar',
+//     HOME_PAGE = 'homePage'
+// }
+
+// enum ComponentStyle{
+//     H1PIMAGE: ''
+// }
+
+
 // funci: ((e: React.MouseEvent<HTMLElement>) => void)[];
 // funci: Array<((e: React.MouseEvent<HTMLElement>) => void)>;
 // funci: Array<(<T>(arg1: T) => any)>;
 
-export { PAGES, IMAGES };
+export { PAGES, ListStyle, IMAGES };

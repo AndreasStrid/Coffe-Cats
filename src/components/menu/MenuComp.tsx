@@ -1,8 +1,8 @@
 import * as React from 'react';
-import '../../App.css'
+import { ListStyle } from '../../content/Variables';
 import ClickEvent from '../../objects/ClickEvent';
 import List from '../list/ListComp';
-
+import './MenuStyle.css';
 
 interface IProps {
     menuButtons: ClickEvent[];
@@ -11,9 +11,7 @@ interface IProps {
 class MenuComp extends React.Component<IProps> {
 
     public render() {
-        return (<div className="menu">
-            <List list={this.props.menuButtons} />
-        </div>);
+        return (<List list={this.props.menuButtons} style={ListStyle.MENU} />);
     }
 }
 

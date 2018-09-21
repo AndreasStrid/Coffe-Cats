@@ -1,8 +1,8 @@
 .homePage{
     height: inherit;
-    width: 1200px;
+    width: inherit;
     background: var(--background);
-    padding: 50px;
+    /* padding: 50px; */
 
     display: grid;
     grid-template-rows: auto; 

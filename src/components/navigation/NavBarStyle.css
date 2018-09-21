@@ -1,0 +1,28 @@
+.navBar{
+    height: inherit;
+    width: inherit;
+
+    display: grid;
+    /* grid-template-rows: auto;  */
+    justify-items: center;
+    background: var(--dark);
+
+    /* -webkit-box-shadow: 0 100px 60px -6px rgb(194, 18, 18); */
+    /* border: 10px solid var(--light); */
+}
+
+.navBar li {
+    color: var(--light);
+    font-size: 21px;
+    display: inline-block;
+    padding: 10px;
+    margin: calc( (var(--navBarHeight)/4) ) 40px 0px 40px; 
+
+    transition: color 1s ease;
+    /* border: 2px solid var(--menu); */
+}
+
+li:hover{
+    color: var(--lightHover);
+    transition: color 0.5s ease;
+} 

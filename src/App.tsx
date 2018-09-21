@@ -3,7 +3,7 @@ import './App.css';
 import MenuComp from './components/menu/MenuComp';
 import NavbarComp from './components/navigation/NavBarComp'
 import HomePageComp from './components/pages/homePage/HomePageComp';
-import { ABOUT_PAGE, BOOKING_PAGE, HOME_PAGE, NAVBAR_CLICK_EVENTS, PAGES } from './content/Pages';
+import { ABOUT_PAGE, BOOKING_PAGE, HOME_PAGE, LOGIN_PAGE, NAVBAR_CLICK_EVENTS, PROFILE_PAGE } from './content/Pages';
 // import PageTemplate from './objects/PageTemplate'
 
 interface IState {
@@ -14,12 +14,15 @@ class App extends React.Component<{}, IState> {
 
   constructor() {
     super({});
-    this.state = { currentPage: '' };
+    this.state = { currentPage: HOME_PAGE.url };
+    history.pushState('', HOME_PAGE.name, HOME_PAGE.url);
 
     this.redirect = this.redirect.bind(this);
     ABOUT_PAGE.setRedirect(this.redirect);
     BOOKING_PAGE.setRedirect(this.redirect);
     HOME_PAGE.setRedirect(this.redirect);
+    LOGIN_PAGE.setRedirect(this.redirect);
+    PROFILE_PAGE.setRedirect(this.redirect);
   }
   public render() {
 
@@ -29,7 +32,6 @@ class App extends React.Component<{}, IState> {
     return (
       <div className="appGrid">
         <div className="navBarGrid">
-          <p>Navbar</p>
           <NavbarComp navBarButtons={NAVBAR_CLICK_EVENTS} />
         </div>
         <div className="menuGrid">
@@ -49,7 +51,7 @@ class App extends React.Component<{}, IState> {
   }
 
   public pageRenderer(pageSelected: string): JSX.Element {
-    if (pageSelected === PAGES.HOME_PAGE.url) {
+    if (pageSelected === HOME_PAGE.url) {
       // HOME_PAGE.setRedirect(this.redirect);
       return (<HomePageComp H1PImageList={HOME_PAGE.H1PImageComponetns} />)
     }
@@ -63,13 +65,19 @@ class App extends React.Component<{}, IState> {
   }
 
   public menuRenderer(pageSelected: string): JSX.Element {
-    if (pageSelected === PAGES.HOME_PAGE.url) {
-      return (<MenuComp menuButtons={HOME_PAGE.menuItems} />)
+    if (pageSelected === ABOUT_PAGE.url) {
+      return (<MenuComp menuButtons={ABOUT_PAGE.menuItems} />)
     }
-    else if (pageSelected === PAGES.BOOKING_PAGE.url) {
+    else if (pageSelected === BOOKING_PAGE.url) {
       return (<MenuComp menuButtons={BOOKING_PAGE.menuItems} />)
     }
-    else if (pageSelected === PAGES.ABOUT_PAGE.url) {
+    else if (pageSelected === HOME_PAGE.url) {
+      return (<MenuComp menuButtons={HOME_PAGE.menuItems} />)
+    }
+    else if (pageSelected === LOGIN_PAGE.url) {
+      return (<MenuComp menuButtons={ABOUT_PAGE.menuItems} />)
+    }
+    else if (pageSelected === PROFILE_PAGE.url) {
       return (<MenuComp menuButtons={ABOUT_PAGE.menuItems} />)
     }
     return <p>dd</p>;
