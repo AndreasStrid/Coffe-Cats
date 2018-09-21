@@ -6,10 +6,51 @@ import HomePageComp from './components/pages/homePage/HomePageComp';
 import { ABOUT_PAGE, BOOKING_PAGE, HOME_PAGE, NAVBAR_CLICK_EVENTS, PAGES } from './content/Pages';
 // import PageTemplate from './objects/PageTemplate'
 
-class App extends React.Component {
+interface IState {
+  currentPage: string;
+}
+
+class App extends React.Component<{}, IState> {
+
+  constructor() {
+    super({});
+    this.state = { currentPage: '' };
+
+    this.redirect = this.redirect.bind(this);
+    ABOUT_PAGE.setRedirect(this.redirect);
+    BOOKING_PAGE.setRedirect(this.redirect);
+    HOME_PAGE.setRedirect(this.redirect);
+  }
+  public render() {
+
+    const page = this.pageRenderer(this.state.currentPage);
+    const menu = this.menuRenderer(this.state.currentPage);
+
+    return (
+      <div className="appGrid">
+        <div className="navBarGrid">
+          <p>Navbar</p>
+          <NavbarComp navBarButtons={NAVBAR_CLICK_EVENTS} />
+        </div>
+        <div className="menuGrid">
+          {menu}
+        </div>
+        <div className="contentGrid">
+          {page}
+        </div>
+      </div>
+
+    );
+  }
+
+  public redirect(name: string, url: string): void {
+    history.pushState('', name, url);
+    this.setState({ currentPage: document.location.pathname });
+  }
 
   public pageRenderer(pageSelected: string): JSX.Element {
     if (pageSelected === PAGES.HOME_PAGE.url) {
+      // HOME_PAGE.setRedirect(this.redirect);
       return (<HomePageComp H1PImageList={HOME_PAGE.H1PImageComponetns} />)
     }
     // else if (pageSelected === PAGES.ABOUT_PAGE.url) {
@@ -34,28 +75,7 @@ class App extends React.Component {
     return <p>dd</p>;
   }
 
-  public render() {
 
-    const currentPage = document.location.pathname;
-    const page = this.pageRenderer(currentPage);
-    const menu = this.menuRenderer(currentPage);
-
-    return (
-      <div className="appGrid">
-        <div className="navBarGrid">
-          <p>Navbar</p>
-          <NavbarComp navBarButtons={NAVBAR_CLICK_EVENTS} />
-        </div>
-        <div className="menuGrid">
-          {menu}
-        </div>
-        <div className="contentGrid">
-          {page}
-        </div>
-      </div>
-
-    );
-  }
 }
 
 export default App;

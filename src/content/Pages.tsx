@@ -17,6 +17,6 @@ const comp2 = new H1PImageObj('Coffe', 'Coffe is good, Coffe is warm, Coffie is 
 const HOME_PAGE_CONTENT = [comp1, comp2];
 const HOME_PAGE = new HomePageObj(PAGES.HOME_PAGE.name, PAGES.HOME_PAGE.url, HOME_PAGE_CLICK_EVENTS, HOME_PAGE_CONTENT);
 
-const NAVBAR_CLICK_EVENTS = [new ClickEvent(ABOUT_PAGE.name, ABOUT_PAGE.redirect), new ClickEvent(BOOKING_PAGE.name, BOOKING_PAGE.redirect), new ClickEvent(HOME_PAGE.name, HOME_PAGE.redirect)];
+const NAVBAR_CLICK_EVENTS = [new ClickEvent(ABOUT_PAGE.name, ABOUT_PAGE.clickHandler), new ClickEvent(BOOKING_PAGE.name, BOOKING_PAGE.clickHandler), new ClickEvent(HOME_PAGE.name, HOME_PAGE.clickHandler)];
 
 export { ABOUT_PAGE, BOOKING_PAGE, HOME_PAGE, NAVBAR_CLICK_EVENTS, PAGES };

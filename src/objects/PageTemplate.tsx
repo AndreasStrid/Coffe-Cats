@@ -5,19 +5,20 @@ class PageTemplate {
     public name: string;
     public url: string;
     public menuItems: ClickEvent[];
+    public redirect: (name: string, url: string) => void;
 
     constructor(name: string, url: string, menuItems: ClickEvent[]) {
         this.name = name;
         this.url = url;
         this.menuItems = menuItems;
 
-        this.redirect = this.redirect.bind(this);
+        this.clickHandler = this.clickHandler.bind(this);
     }
-    set setName(name: string) {
-        this.name = name;
+    public setRedirect(func: (name: string, url: string) => void): void {
+        this.redirect = func;
     }
-    public redirect() {
-        window.location.replace(this.url);
+    public clickHandler(e: React.MouseEvent<HTMLElement>) {
+        this.redirect(this.name, this.url);
     }
 }
 
