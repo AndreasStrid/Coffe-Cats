@@ -15,6 +15,26 @@ const IMAGES = {
 
 };
 
+const API_URL = {
+    base: 'http://locashost:30001',
+    checkToken: '/checkToken',
+    loginIn: '/login'
+}
+
+const SUCCESS_MESSAGES = { login: 'Login Successful' };
+
+const ERROR_MESSAGES = { login: 'Failed to login' }
+
+enum SessionStorage {
+    TOKEN = 'token'
+}
+
+enum CustomerLevel {
+    BRONZE = 1,
+    SIlVER = 2,
+    GOLD = 3
+}
+
 enum ListStyle {
     MENU = 'menu',
     NAVBAR = 'navBar'
@@ -42,4 +62,4 @@ enum ListStyle {
 // funci: Array<((e: React.MouseEvent<HTMLElement>) => void)>;
 // funci: Array<(<T>(arg1: T) => any)>;
 
-export { PAGES, ListStyle, IMAGES };
+export { API_URL, CustomerLevel, ERROR_MESSAGES, IMAGES, ListStyle, PAGES, SessionStorage, SUCCESS_MESSAGES };

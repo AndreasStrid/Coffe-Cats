@@ -19,10 +19,10 @@ class HomePageComp extends React.Component<IProps> {
                     <h1> All your need is </h1>
                 </div>
 
-                {this.createHomePage(this.props.H1PImageList)}
+                {this.createHomePageComponents(this.props.H1PImageList)}
             </div >);
     }
-    public createHomePage(components: H1PImageObj[]): JSX.Element {
+    public createHomePageComponents(components: H1PImageObj[]): JSX.Element {
         const H1PImageElements =
             components.map((component: H1PImageObj) => {
                 return (<H1PImageComp content={component} key={component.h1} />);

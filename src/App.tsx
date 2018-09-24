@@ -3,8 +3,11 @@ import './App.css';
 import MenuComp from './components/menu/MenuComp';
 import NavbarComp from './components/navigation/NavBarComp'
 import HomePageComp from './components/pages/homePage/HomePageComp';
+import LoginPageComp from './components/pages/login/LoginPageComp';
 import { ABOUT_PAGE, BOOKING_PAGE, HOME_PAGE, LOGIN_PAGE, NAVBAR_CLICK_EVENTS, PROFILE_PAGE } from './content/Pages';
+import User from './objects/UserObj'
 // import PageTemplate from './objects/PageTemplate'
+const user = new User();
 
 interface IState {
   currentPage: string;
@@ -54,6 +57,9 @@ class App extends React.Component<{}, IState> {
     if (pageSelected === HOME_PAGE.url) {
       // HOME_PAGE.setRedirect(this.redirect);
       return (<HomePageComp H1PImageList={HOME_PAGE.H1PImageComponetns} />)
+    }
+    else if (pageSelected === LOGIN_PAGE.url) {
+      return (<LoginPageComp user={user} />)
     }
     // else if (pageSelected === PAGES.ABOUT_PAGE.url) {
     //   return ABOUT_PAGE;
