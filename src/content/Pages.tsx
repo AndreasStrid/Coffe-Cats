@@ -1,34 +1,122 @@
-import H1PImageObj from '../components/h1PImage/H1PImageObj'
-import HomePageObj from '../components/pages/homePage/HomePageObj';
-import LoginPageObj from '../components/pages/login/LoginPageObj';
-import ClickEvent from '../objects/ClickEvent';
-import Login from '../objects/Login'
-import PageTemplate from '../objects/PageTemplate';
-import { IMAGES, PAGES } from './Variables'
+import { IMAGES, PAGES } from "./Variables";
+
+const tempRedirect = (name: string, url: string) => {
+  "";
+};
 
 /* About Page */
-const ABOUT_PAGE_CLICK_EVENTS = [new ClickEvent(PAGES.ABOUT_PAGE.name, new Login('About').logIn)];
-const ABOUT_PAGE = new PageTemplate(PAGES.ABOUT_PAGE.name, PAGES.ABOUT_PAGE.url, ABOUT_PAGE_CLICK_EVENTS);
+const ABOUT_PAGE_MENU_BUTTONS = [
+  {
+    name: PAGES.ABOUT_PAGE.name,
+    redirect: tempRedirect,
+    url: PAGES.ABOUT_PAGE.url
+  }
+];
+
+const ABOUT_PAGE = {
+  menuButtons: ABOUT_PAGE_MENU_BUTTONS,
+  name: PAGES.ABOUT_PAGE.name,
+  url: PAGES.ABOUT_PAGE.url
+};
 
 /* Booking Page */
-const BOOKING_PAGE_CLICK_EVENTS = [new ClickEvent(PAGES.BOOKING_PAGE.name, new Login('Booking').logIn)];
-const BOOKING_PAGE = new PageTemplate(PAGES.BOOKING_PAGE.name, PAGES.BOOKING_PAGE.url, BOOKING_PAGE_CLICK_EVENTS);
+const BOOKING_PAGE_MENU_BUTTONS = [
+  {
+    name: PAGES.BOOKING_PAGE.name,
+    redirect: tempRedirect,
+    url: PAGES.BOOKING_PAGE.url
+  }
+];
+
+const BOOKING_PAGE = {
+  menuButtons: BOOKING_PAGE_MENU_BUTTONS,
+  name: PAGES.BOOKING_PAGE.name,
+  url: PAGES.BOOKING_PAGE.url
+};
 
 /* Login Page */
-const LOGIN_PAGE_CLICK_EVENTS = [new ClickEvent(PAGES.LOGIN_PAGE.name, new Login('Booking').logIn)];
-const LOGIN_PAGE = new LoginPageObj(PAGES.LOGIN_PAGE.name, PAGES.LOGIN_PAGE.url, LOGIN_PAGE_CLICK_EVENTS);
+const LOGIN_PAGE_MENU_BUTTONS = [
+  {
+    name: PAGES.LOGIN_PAGE.name,
+    redirect: tempRedirect,
+    url: PAGES.LOGIN_PAGE.url
+  }
+];
+
+const LOGIN_PAGE = {
+  menuButtons: LOGIN_PAGE_MENU_BUTTONS,
+  name: PAGES.LOGIN_PAGE.name,
+  url: PAGES.LOGIN_PAGE.url
+};
 
 /* Home Page */
-const comp1 = new H1PImageObj('Cats', 'Cats are fluffy, awesome and the reason why the internet exist. Just by looking at their cute faces makes you happy. So you are not buying a pet you are buying happines. In this case renting happines for a reasoniable price', IMAGES.CAT_IMAGE.img);
-const comp2 = new H1PImageObj('Coffe', 'Coffe is good, Coffe is warm, Coffie is life, Drink Coffe and you will see your purpose in life', IMAGES.CAT_COFFE_IMAGE.img);
+const comp1 = {
+  h1: "Cats",
+  img: IMAGES.CAT_IMAGE.img,
+  p:
+    "Cats are fluffy, awesome and the reason why the internet exist. Just by looking at their cute faces makes you happy. So you are not buying a pet you are buying happines. In this case renting happines for a reasoniable price"
+};
+
+const comp2 = {
+  h1: "Coffe",
+  img: IMAGES.CAT_COFFE_IMAGE.img,
+  p:
+    "Coffe is good, Coffe is warm, Coffie is life, Drink Coffe and you will see your purpose in life"
+};
+
 const HOME_PAGE_COMPONENTS = [comp1, comp2];
-const HOME_PAGE_CLICK_EVENTS = [new ClickEvent(PAGES.HOME_PAGE.name, new Login('Home').logIn), new ClickEvent(PAGES.HOME_PAGE.name, new Login('Home').logIn), new ClickEvent(PAGES.HOME_PAGE.name, new Login('Home').logIn), new ClickEvent(PAGES.HOME_PAGE.name, new Login('Home').logIn)];
-const HOME_PAGE = new HomePageObj(PAGES.HOME_PAGE.name, PAGES.HOME_PAGE.url, HOME_PAGE_CLICK_EVENTS, HOME_PAGE_COMPONENTS);
+
+const HOME_PAGE_MENU_BUTTONS = [
+  {
+    name: PAGES.HOME_PAGE.name,
+    redirect: tempRedirect,
+    url: PAGES.HOME_PAGE.url
+  }
+];
+
+const HOME_PAGE = {
+  H1PImageList: HOME_PAGE_COMPONENTS,
+  menuButtons: HOME_PAGE_MENU_BUTTONS,
+  name: PAGES.HOME_PAGE.name,
+  url: PAGES.HOME_PAGE.url
+};
 
 /* Profile Page */
-const PROFILE_PAGE_CLICK_EVENTS = [new ClickEvent(PAGES.PROFILE_PAGE.name, new Login('Booking').logIn)];
-const PROFILE_PAGE = new PageTemplate(PAGES.PROFILE_PAGE.name, PAGES.PROFILE_PAGE.url, PROFILE_PAGE_CLICK_EVENTS);
+const PROFILE_PAGE_MENU_BUTTONS = [
+  {
+    name: PAGES.PROFILE_PAGE.name,
+    redirect: tempRedirect,
+    url: PAGES.PROFILE_PAGE.url
+  }
+];
 
-const NAVBAR_CLICK_EVENTS = [new ClickEvent(ABOUT_PAGE.name, ABOUT_PAGE.clickHandler), new ClickEvent(BOOKING_PAGE.name, BOOKING_PAGE.clickHandler), new ClickEvent(LOGIN_PAGE.name, LOGIN_PAGE.clickHandler), new ClickEvent(HOME_PAGE.name, HOME_PAGE.clickHandler), new ClickEvent(PROFILE_PAGE.name, PROFILE_PAGE.clickHandler)];
+const PROFILE_PAGE = {
+  menuButtons: PROFILE_PAGE_MENU_BUTTONS,
+  name: PAGES.PROFILE_PAGE.name,
+  url: PAGES.PROFILE_PAGE.url
+};
 
-export { ABOUT_PAGE, BOOKING_PAGE, HOME_PAGE, LOGIN_PAGE, PROFILE_PAGE, NAVBAR_CLICK_EVENTS };
+const NAVBAR_BUTTONS = [
+  { name: ABOUT_PAGE.name, redirect: tempRedirect, url: ABOUT_PAGE.url },
+  {
+    name: BOOKING_PAGE.name,
+    redirect: tempRedirect,
+    url: BOOKING_PAGE.url
+  },
+  { name: LOGIN_PAGE.name, redirect: tempRedirect, url: LOGIN_PAGE.url },
+  { name: HOME_PAGE.name, redirect: tempRedirect, url: HOME_PAGE.url },
+  {
+    name: PROFILE_PAGE.name,
+    redirect: tempRedirect,
+    url: PROFILE_PAGE.url
+  }
+];
+
+export {
+  ABOUT_PAGE,
+  BOOKING_PAGE,
+  HOME_PAGE,
+  LOGIN_PAGE,
+  PROFILE_PAGE,
+  NAVBAR_BUTTONS
+};
