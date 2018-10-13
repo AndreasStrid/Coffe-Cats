@@ -11,11 +11,8 @@ import {
   NAVBAR_BUTTONS,
   PROFILE_PAGE
 } from "./content/Pages";
-import User from "./objects/UserObj";
 import HomePage from "./pages/homePage/HomePage";
-import LoginPageComp from "./pages/login/LoginPageComp";
-
-const user = new User();
+import LoginPageComp from "./pages/login/LoginPage";
 
 const H1PImageList = {
   H1PImageList: HOME_PAGE.H1PImageList
@@ -33,15 +30,12 @@ class App extends React.Component<{}, IState> {
 
     this.redirect = this.redirect.bind(this);
 
-    NAVBAR_BUTTONS.map((item: IRedirectButtonProps) => {
-      item.redirect = this.redirect;
-    });
+    this.setUpRedirects();
   }
+
   public render() {
     const page = this.pageRenderer(this.state.currentPage);
     const menu = this.menuRenderer(this.state.currentPage);
-
-    // NAVBAR_CLICK_EVENTS[3].eventHandler = this.clickHandlerRedirect(, 'apa', 'lapa')
 
     return (
       <div className="appGrid">
@@ -53,26 +47,12 @@ class App extends React.Component<{}, IState> {
       </div>
     );
   }
-
-  public redirect(name: string, url: string): void {
-    history.pushState("", name, url);
-    this.setState({ currentPage: document.location.pathname });
-  }
-
-  public clickHandlerRedirect(
-    e: React.MouseEvent<HTMLElement>,
-    name: string,
-    url: string
-  ) {
-    this.redirect(name, url);
-  }
-
   public pageRenderer(pageSelected: string): JSX.Element {
     if (pageSelected === HOME_PAGE.url) {
       return <HomePage child={H1PImageList} />;
       // <HomePage H1PImageList={HOME_PAGE.H1PImageComponetns} />;
     } else if (pageSelected === LOGIN_PAGE.url) {
-      return <LoginPageComp user={user} />;
+      return <LoginPageComp />;
     }
     // else if (pageSelected === PAGES.ABOUT_PAGE.url) {
     //   return ABOUT_PAGE;
@@ -96,6 +76,16 @@ class App extends React.Component<{}, IState> {
       return <Menu buttons={PROFILE_PAGE.menuButtons} />;
     }
     return <p>dd</p>;
+  }
+  public setUpRedirects(): void {
+    NAVBAR_BUTTONS.map((item: IRedirectButtonProps) => {
+      item.redirect = this.redirect;
+    });
+  }
+
+  public redirect(name: string, url: string): void {
+    history.pushState("", name, url);
+    this.setState({ currentPage: document.location.pathname });
   }
 }
 
