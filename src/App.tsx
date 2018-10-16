@@ -12,17 +12,15 @@ import {
   PROFILE_PAGE
 } from "./content/Pages";
 import HomePage from "./pages/homePage/HomePage";
+import IPage from "./pages/IPage";
 import LoginPageComp from "./pages/login/LoginPage";
-
-const H1PImageList = {
-  H1PImageList: HOME_PAGE.H1PImageList
-};
 
 interface IState {
   currentPage: string;
 }
 
-class App extends React.Component<{}, IState> {
+class App extends React.Component<{}, IState> implements IPage {
+  public RENDER_PAGE_ERROR: "Couldn't render this page";
   constructor() {
     super({});
     this.state = { currentPage: HOME_PAGE.url };
@@ -49,7 +47,7 @@ class App extends React.Component<{}, IState> {
   }
   public pageRenderer(pageSelected: string): JSX.Element {
     if (pageSelected === HOME_PAGE.url) {
-      return <HomePage child={H1PImageList} />;
+      return <HomePage H1PImageList={HOME_PAGE.H1PImageList} />;
       // <HomePage H1PImageList={HOME_PAGE.H1PImageComponetns} />;
     } else if (pageSelected === LOGIN_PAGE.url) {
       return <LoginPageComp />;
@@ -60,7 +58,7 @@ class App extends React.Component<{}, IState> {
     // else if (pageSelected === PAGES.BOOKING_PAGE.url) {
     //   return BOOKING_PAGE;
     // }
-    return <p>dd</p>;
+    return <p>{this.RENDER_PAGE_ERROR}</p>;
   }
 
   public menuRenderer(pageSelected: string): JSX.Element {
@@ -79,6 +77,21 @@ class App extends React.Component<{}, IState> {
   }
   public setUpRedirects(): void {
     NAVBAR_BUTTONS.map((item: IRedirectButtonProps) => {
+      item.redirect = this.redirect;
+    });
+    ABOUT_PAGE.menuButtons.map((item: IRedirectButtonProps) => {
+      item.redirect = this.redirect;
+    });
+    BOOKING_PAGE.menuButtons.map((item: IRedirectButtonProps) => {
+      item.redirect = this.redirect;
+    });
+    HOME_PAGE.menuButtons.map((item: IRedirectButtonProps) => {
+      item.redirect = this.redirect;
+    });
+    LOGIN_PAGE.menuButtons.map((item: IRedirectButtonProps) => {
+      item.redirect = this.redirect;
+    });
+    PROFILE_PAGE.menuButtons.map((item: IRedirectButtonProps) => {
       item.redirect = this.redirect;
     });
   }

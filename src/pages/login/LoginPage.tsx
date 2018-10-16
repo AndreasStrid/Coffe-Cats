@@ -1,95 +1,41 @@
 import * as React from "react";
-import IPage from "../../interfaces/IPage";
-import LoginPageState from "./ILoginPageState";
-import "./LoginPageStyle.css";
 import { LOGIN_PAGE, REGISTER_PAGE } from "../../content/Pages";
+import IPage from "../IPage";
+import LoginBox from "./components/loginBox/LoginBox";
+import "./LoginPageStyle.css";
 
-class LoginPage extends React.Component<{}, LoginPageState>
+class LoginPage extends React.Component<{}, ILoginPageState>
   implements IPage {
+  public RENDER_PAGE_ERROR: "Couldn't render this page";
+
   constructor(props: any) {
     super(props);
     this.state = {
+      currentPage: document.location.pathname,
       password: "",
       userName: "",
-      currentPage: document.location.pathname
     };
 
-    this.handleSubmit = this.handleSubmit.bind(this);
-    this.handleOnChange = this.handleOnChange.bind(this);
   }
   public render() {
+    const page = this.pageRenderer(this.state.currentPage)
     return (
       <div className="loginPage">
-        <form className="loginBox" onSubmit={this.handleSubmit}>
-          <h1> Login </h1>
-          {this.renderInputBox("UserName", "userName")}
-          {this.renderInputBox("Password", "password")}
-          <div>
-            <button type="submit" onClick={this.handleSubmit}>
-              Login
-            </button>
-          </div>
-        </form>
+        {page}
       </div>
     );
   }
   public pageRenderer(pageSelected: string): JSX.Element {
     if (pageSelected === LOGIN_PAGE.url) {
+      return <LoginBox label={LOGIN_PAGE.content.label} stateNames={LOGIN_PAGE.content.stateNames} />
     } else if (pageSelected === REGISTER_PAGE.url) {
+      return <LoginBox label={REGISTER_PAGE.content.label} stateNames={REGISTER_PAGE.content.stateNames} />
     }
+    return <p> {this.RENDER_PAGE_ERROR} </p>;
   }
   public redirect(pageName: string, url: string): void {
     history.pushState("", pageName, url);
     this.setState({ currentPage: document.location.pathname });
-  }
-
-  public renderInputBox(label: string, id: string) {
-    return (
-      <div>
-        <div>
-          <label>{label}</label>
-        </div>
-        <input
-          id={id}
-          placeholder={label}
-          value={this.state[id]}
-          type="text"
-          onChange={this.handleOnChange}
-          required={true}
-        />
-      </div>
-    );
-  }
-  public handleSubmit(event: React.FormEvent) {
-    event.preventDefault();
-    // tslint:disable-next-line:no-console
-    console.log("hej");
-    // this.state.user.login(this.state.name, this.state.password);
-  }
-
-  public apalapa() {
-    return "apalapa";
-  }
-
-  public createLoginPage() {
-    // if (this.state.user.isLoggedIn()) {
-    //   return <p> creteLoginPage </p>;
-    // }
-    // return <p> NOT LOGIN </p>;
-  }
-
-  public inputMustBeApa(element: any) {
-    if (element.value !== "apa") {
-      element.setCustomValidity("You input must be apa");
-    } else {
-      element.setCustomValidity("");
-    }
-  }
-
-  public handleOnChange(event: any) {
-    this.inputMustBeApa(event.target);
-    // @ts-ignore these can never be null, use ignore to save code
-    this.setState({ [event.target.id]: event.target.value });
   }
 }
 

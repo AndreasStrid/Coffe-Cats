@@ -14,6 +14,8 @@ class RedirectButton extends React.Component<IRedirectButtonProps> {
     );
   }
   public clickHandleRedirect(e: React.MouseEvent<HTMLElement>) {
+    // tslint:disable-next-line:no-console
+    console.log("hej:", this.props.name, this.props.url);
     this.props.redirect(this.props.name, this.props.url);
   }
 }

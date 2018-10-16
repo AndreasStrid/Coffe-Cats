@@ -1,13 +1,11 @@
 import * as React from "react";
 import H1PImage from "../../components/h1PImage/H1PImage";
 import IH1PImageProps from "../../components/h1PImage/IH1PImageProps";
-import IPageProps from "../IPageProps";
-import Page from "../Page";
 import "./HomPageStyle.css";
 import IHomePageProps from "./IHomePageProps";
 
-class HomePage extends Page<IHomePageProps> {
-  constructor(props: IPageProps<IHomePageProps>) {
+class HomePage extends React.Component<IHomePageProps> {
+  constructor(props: IHomePageProps) {
     super(props);
   }
   public render() {
@@ -16,7 +14,7 @@ class HomePage extends Page<IHomePageProps> {
         <div className="topArea">
           <h1> All your need is </h1>
         </div>
-        {this.createHomePageComponents(this.props.child.H1PImageList)}
+        {this.createHomePageComponents(this.props.H1PImageList)}
       </div>
     );
   }

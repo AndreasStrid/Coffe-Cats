@@ -48,14 +48,25 @@ const LOGIN_PAGE_MENU_BUTTONS = [
   }
 ];
 
+const LOGIN_CONTENT = {
+  label: PAGES.LOGIN_PAGE.Login.name,
+  stateNames: ['UserName', 'Password']
+}
+
 const LOGIN_PAGE = {
+  content: LOGIN_CONTENT,
   menuButtons: LOGIN_PAGE_MENU_BUTTONS,
   name: PAGES.LOGIN_PAGE.Login.name,
   url: PAGES.LOGIN_PAGE.Login.url
 };
 
 /* Register Page */
+const REGISTER_CONTENT = {
+  label: PAGES.LOGIN_PAGE.Register.name,
+  stateNames: ['UserName', 'Password']
+}
 const REGISTER_PAGE = {
+  content: REGISTER_CONTENT,
   menuButtons: LOGIN_PAGE_MENU_BUTTONS,
   name: PAGES.LOGIN_PAGE.Register.name,
   url: PAGES.LOGIN_PAGE.Register.url
@@ -71,7 +82,7 @@ const comp1 = {
 
 const comp2 = {
   h1: "Coffe",
-  img: IMAGES.CAT_COFFE_IMAGE.img,
+  img: IMAGES.CAT_COFFEE_IMAGE.img,
   p:
     "Coffe is good, Coffe is warm, Coffie is life, Drink Coffe and you will see your purpose in life"
 };

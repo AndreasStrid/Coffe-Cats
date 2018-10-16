@@ -1,5 +1,5 @@
-import ClickEvent from "../../objects/ClickEvent";
-import PageTemplate from "../../objects/PageTemplate";
+import ClickEvent from "./ClickEvent";
+import PageTemplate from "./PageTemplate";
 
 class LoginPageObj extends PageTemplate {
   constructor(name: string, url: string, menuItems: ClickEvent[]) {

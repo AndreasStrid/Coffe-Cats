@@ -14,7 +14,7 @@ const PAGES = {
 };
 
 const IMAGES = {
-  CAT_COFFE_IMAGE: { name: "CAT_COFFE_IMAGE", img: COFFE_IMAGE },
+  CAT_COFFEE_IMAGE: { name: "CAT_COFFEE_IMAGE", img: COFFE_IMAGE },
   CAT_IMAGE: { name: "CAT_IMAGE", img: CAT_IMAGE_IMP }
 };
 
