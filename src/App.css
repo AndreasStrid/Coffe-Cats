@@ -2,21 +2,26 @@
 
 :root {
   /* Colors */
-  --background:rgb(226, 226, 226);
+  --background: rgb(226, 226, 226);
   --componentColor: rgb(205, 200, 207);
   --dark: #333;
   --light: #fff;
   --lightHover: rgb(151, 147, 147);
-  --shadow: 0 1px 5px rgba(104,104,104,0.8);
+  --shadow: 0 1px 5px rgba(104, 104, 104, 0.8);
   --body: #ccc;
   --boxy: rgb(11, 248, 248);
-  --grey: #7B6351;
+  --grey: #7b6351;
   --navbar: rgb(236, 236, 45);
   --page: rgb(85, 211, 63);
   --homePage: rgb(231, 22, 22);
   /* Width & Heights */
-  --menuWidth: 300px;
+  --buttonWidth: 165px;
+  --menuWidth: 250px;
   --navBarHeight: 100px;
+
+  /* Margins */
+  --basicMargin: 20px;
+  --basicPadding: 20px;
 }
 
 /* To remove any secret default values*/
@@ -25,8 +30,8 @@
   padding: 0;
 }
 
-html {   
- /* width: 100%;
+html {
+  /* width: 100%;
   height: 100%;
   background-color: #ffffff;
   min-height: fit-content;
@@ -35,7 +40,7 @@ html {
 
   box-sizing: border-box;
   font-family: Arial, Helvetica, sans-serif;
-  color: var(--dark); 
+  color: var(--dark);
 }
 
 body {
@@ -53,4 +58,19 @@ body {
 
 img {
   max-width: 100%;
+}
+
+input {
+  margin: 5px 0px 10px 0px;
+  padding: 10px;
+  width: calc(var(--buttonWidth) - 24px);
+}
+
+button {
+  margin: 5px 0px 10px 0px;
+  padding: 10px;
+  width: var(--buttonWidth);
+  color: var(--light);
+  background-color: var(--dark);
+  border: 0;
 }

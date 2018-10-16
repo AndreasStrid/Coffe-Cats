@@ -37,16 +37,28 @@ const BOOKING_PAGE = {
 /* Login Page */
 const LOGIN_PAGE_MENU_BUTTONS = [
   {
-    name: PAGES.LOGIN_PAGE.name,
+    name: PAGES.LOGIN_PAGE.Login.name,
     redirect: tempRedirect,
-    url: PAGES.LOGIN_PAGE.url
+    url: PAGES.LOGIN_PAGE.Login.url
+  },
+  {
+    name: PAGES.LOGIN_PAGE.Register.name,
+    redirect: tempRedirect,
+    url: PAGES.LOGIN_PAGE.Register.url
   }
 ];
 
 const LOGIN_PAGE = {
   menuButtons: LOGIN_PAGE_MENU_BUTTONS,
-  name: PAGES.LOGIN_PAGE.name,
-  url: PAGES.LOGIN_PAGE.url
+  name: PAGES.LOGIN_PAGE.Login.name,
+  url: PAGES.LOGIN_PAGE.Login.url
+};
+
+/* Register Page */
+const REGISTER_PAGE = {
+  menuButtons: LOGIN_PAGE_MENU_BUTTONS,
+  name: PAGES.LOGIN_PAGE.Register.name,
+  url: PAGES.LOGIN_PAGE.Register.url
 };
 
 /* Home Page */
@@ -118,5 +130,6 @@ export {
   HOME_PAGE,
   LOGIN_PAGE,
   PROFILE_PAGE,
+  REGISTER_PAGE,
   NAVBAR_BUTTONS
 };

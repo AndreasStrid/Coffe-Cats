@@ -1,0 +1,58 @@
+.loginPage {
+  height: inherit;
+  width: inherit;
+  display: grid;
+  grid-template-columns: auto;
+  background: var(--light);
+  background-image: url("../../content/images/aroma_aromatic_art.jpg");
+  background-size: cover;
+  background-position: center;
+  padding-bottom: 200px;
+  /* background: url("../../content/images/coffe_and_cats_pls.jpeg"); */
+  /* justify-items: center; */
+}
+
+.loginBox {
+  /* overflow: auto;
+  display: block; */
+
+  display: grid;
+  grid-template-columns: auto;
+  justify-content: center;
+  justify-items: center;
+  justify-self: center;
+
+  align-content: center;
+  height: max-content;
+  width: 400px;
+  padding: var(--basicPadding);
+  /* margin: 35px 10px 10px 10px; */
+  margin: var(--basicMargin);
+  background: var(--grey);
+  color: var(--light);
+
+  border: solid 5px var(--light);
+  clip-path: polygon(
+    calc(0% + 5px) calc(0% + 5px),
+    /* top left */ calc(100% - 5px) calc(0% + 5px),
+    /* top right */ calc(100% - 5px) calc(100% - 5px),
+    /* bottom right */ calc(0% + 5px) calc(100% - 5px) /* bottom left */
+  );
+  transition: clip-path 0.6s linear;
+}
+
+/* .loginBox h1 {
+   -webkit-text-stroke: 1px black;
+   color: white;
+   text-shadow:
+       3px 3px 0 #000,
+     -1px -1px 0 #000,  
+      1px -1px 0 #000,
+      -1px 1px 0 #000,
+       1px 1px 0 #000;
+} */
+
+.loginBox:hover {
+  /* Clip-path spanning the entire box so it's no longer hiding the full-width border. */
+  clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+}

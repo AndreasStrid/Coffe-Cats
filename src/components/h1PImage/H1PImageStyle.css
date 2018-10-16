@@ -1,28 +1,22 @@
-.container{
-    padding: 20px;
-    margin: 35px 25px 35px 25px;
-    display: grid;
-    grid-template-columns: auto auto;
+.container {
+  padding: 20px;
+  margin: 35px 25px 35px 25px;
+  display: grid;
+  grid-template-columns: auto auto;
 
-    background: var(--grey);
-    box-shadow: var(--shadow);
-    max-height: 251px;
-    max-width: 1000px;
-    overflow: hidden;
-    object-fit: contain;
+  background: var(--grey);
+  box-shadow: var(--shadow);
+  max-height: 251px;
+  max-width: 1000px;
+  overflow: hidden;
+  object-fit: contain;
 }
 
 .H1_P {
-    justify-self: left;
-    max-width: 500px;
-   
-}
-
-.H1_P h1{
-   /* margin-left: -4px;
-   margin-top: -11px; */
+  justify-self: left;
+  max-width: 500px;
 }
 
 .image {
-    justify-self: right;
+  justify-self: right;
 }
