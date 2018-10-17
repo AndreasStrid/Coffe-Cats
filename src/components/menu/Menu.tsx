@@ -1,12 +1,11 @@
 import * as React from "react";
-import IButtonsProps from "src/components/redirectButton/IRedirectButtonsProps";
-import { ListStyle } from "../../content/Variables";
 import List from "../list/List";
 import "./MenuStyle.css";
 
-class Menu extends React.Component<IButtonsProps> {
+class Menu extends React.Component<IRedirectButtonsProps> {
   public render() {
-    return <List list={this.props.buttons} style={ListStyle.MENU} />;
+    console.log(" LIST ", this.props.buttons);
+    return <List list={this.props.buttons} style={"menu"} />;
   }
 }
 

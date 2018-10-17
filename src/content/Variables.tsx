@@ -1,21 +1,22 @@
 import * as CAT_IMAGE_IMP from "./images/cat_in_coffecup.jpg";
 import * as COFFE_IMAGE from "./images/coffe_cat_art.jpg";
 
-const PAGES = {
-  ABOUT_PAGE: { name: "About", url: "/about" },
-  BOOKING_PAGE: { name: "Booking", url: "/booking" },
-  HOME_PAGE: { name: "Home", url: "/home" },
-  LOGIN_PAGE: {
-    Content: { userName: "UserName", password: "Passowrd" },
-    Login: { name: "Login", url: "/login" },
-    Register: { name: "Register", url: "/register" }
-  },
-  PROFILE_PAGE: { name: "Profile", url: "/profile" }
-};
-
 const IMAGES = {
   CAT_COFFEE_IMAGE: { name: "CAT_COFFEE_IMAGE", img: COFFE_IMAGE },
   CAT_IMAGE: { name: "CAT_IMAGE", img: CAT_IMAGE_IMP }
+};
+
+const URL = {
+  ABOUT: "/about",
+  ABOUT_CAT: "/about/cat",
+  BOOKING_1: "/booking/1",
+  BOOKING: "/booking",
+  HOME: "/home",
+  PROFILE: "/profile",
+  PROFILE_PRÖ: "/profile/prö",
+  SIGN: "/sign",
+  SIGN_UP: "/sign/up",
+  SIGN_IN: "/sign/in"
 };
 
 const API_URL = {
@@ -36,11 +37,6 @@ enum CustomerLevel {
   BRONZE = 1,
   SIlVER = 2,
   GOLD = 3
-}
-
-enum ListStyle {
-  MENU = "menu",
-  NAVBAR = "navBar"
 }
 
 // enum GridStyle {
@@ -69,8 +65,7 @@ export {
   CustomerLevel,
   ERROR_MESSAGES,
   IMAGES,
-  ListStyle,
-  PAGES,
   SessionStorage,
-  SUCCESS_MESSAGES
+  SUCCESS_MESSAGES,
+  URL
 };

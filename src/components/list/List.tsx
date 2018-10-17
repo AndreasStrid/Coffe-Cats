@@ -1,8 +1,5 @@
 import * as React from "react";
-import IRedirectButtonProps from "src/components/redirectButton/IRedirectButtonProps";
-import "../../App.css";
-import RedirectButton from "../redirectButton/RedirectButton";
-import IListProps from "./IListProps";
+import { Link } from "react-router-dom";
 
 class List extends React.Component<IListProps> {
   public render() {
@@ -15,12 +12,9 @@ class List extends React.Component<IListProps> {
   public createItemList(list: IRedirectButtonProps[]): JSX.Element {
     const listElement = list.map((item: IRedirectButtonProps) => {
       return (
-        <RedirectButton
-          redirect={item.redirect}
-          name={item.name}
-          url={item.url}
-          key={item.name}
-        />
+        <li key={item.name}>
+          <Link to={item.url}> {item.name} </Link>
+        </li>
       );
     });
     return <ul> {listElement} </ul>;

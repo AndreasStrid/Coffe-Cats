@@ -1,6 +1,4 @@
 import * as React from "react";
-import IRedirectButtonProps from "src/components/redirectButton/IRedirectButtonProps";
-import "../../App.css";
 
 class RedirectButton extends React.Component<IRedirectButtonProps> {
   constructor(props: IRedirectButtonProps) {
@@ -16,7 +14,7 @@ class RedirectButton extends React.Component<IRedirectButtonProps> {
   public clickHandleRedirect(e: React.MouseEvent<HTMLElement>) {
     // tslint:disable-next-line:no-console
     console.log("hej:", this.props.name, this.props.url);
-    this.props.redirect(this.props.name, this.props.url);
+    // this.props.redirect(this.props.name, this.props.url);
   }
 }
 

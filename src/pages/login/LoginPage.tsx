@@ -1,6 +1,6 @@
 import * as React from "react";
-import { LOGIN_PAGE, REGISTER_PAGE } from "../../content/Pages";
-import IPage from "../IPage";
+import { SIGN_IN_PAGE, SIGN_UP_PAGE } from "src/content/Pages";
+import { URL } from "src/content/Variables";
 import LoginBox from "./components/loginBox/LoginBox";
 import "./LoginPageStyle.css";
 
@@ -13,23 +13,28 @@ class LoginPage extends React.Component<{}, ILoginPageState>
     this.state = {
       currentPage: document.location.pathname,
       password: "",
-      userName: "",
+      userName: ""
     };
-
   }
   public render() {
-    const page = this.pageRenderer(this.state.currentPage)
-    return (
-      <div className="loginPage">
-        {page}
-      </div>
-    );
+    const page = this.pageRenderer(this.state.currentPage);
+    return <div className="loginPage">{page}</div>;
   }
   public pageRenderer(pageSelected: string): JSX.Element {
-    if (pageSelected === LOGIN_PAGE.url) {
-      return <LoginBox label={LOGIN_PAGE.content.label} stateNames={LOGIN_PAGE.content.stateNames} />
-    } else if (pageSelected === REGISTER_PAGE.url) {
-      return <LoginBox label={REGISTER_PAGE.content.label} stateNames={REGISTER_PAGE.content.stateNames} />
+    if (pageSelected === URL.SIGN_IN) {
+      return (
+        <LoginBox
+          label={SIGN_IN_PAGE.label}
+          stateNames={SIGN_IN_PAGE.stateNames}
+        />
+      );
+    } else if (pageSelected === URL.SIGN_IN) {
+      return (
+        <LoginBox
+          label={SIGN_UP_PAGE.label}
+          stateNames={SIGN_UP_PAGE.stateNames}
+        />
+      );
     }
     return <p> {this.RENDER_PAGE_ERROR} </p>;
   }
