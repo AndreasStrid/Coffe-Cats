@@ -43,7 +43,8 @@ class App extends React.Component<{}> {
     let pageList: IPage[];
     pageList = [];
     pageList.push({ url: currentUrl, component: <HomePage H1PImageList={HOME_PAGE} /> });
-    pageList.push({ url: currentUrl, component: <LoginPage label={SIGN_IN_PAGE} /> });
+    pageList.push({ url: currentUrl, component: <LoginPage loginBox={SIGN_IN_PAGE} /> });
+    pageList.push({ url: currentUrl, component: <LoginPage loginBox={SIGN_UP_PAGE} /> });
     pageList.push({ url: currentUrl, component: <HomePage H1PImageList={HOME_PAGE} /> });
     pageList.push({ url: currentUrl, component: <HomePage H1PImageList={HOME_PAGE} /> });
     return pageList;
