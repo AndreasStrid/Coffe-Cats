@@ -1,4 +1,4 @@
-interface ILoginBoxState {
+interface LoginBoxState {
   userName: string;
   password: string;
 }

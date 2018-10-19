@@ -1,3 +1,4 @@
-interface IMenuProps extends IRedirectButtonProps {
-  pageContent: any;
-}
+interface IMenuProps extends IRouteProps {
+  buttons: IRedirectButtonProps[];
+  currentUrl: string;
+} 

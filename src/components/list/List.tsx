@@ -1,5 +1,6 @@
 import * as React from "react";
-import { Link } from "react-router-dom";
+import "../../App.css";
+import RedirectButton from "../redirectButton/RedirectButton";
 
 class List extends React.Component<IListProps> {
   public render() {

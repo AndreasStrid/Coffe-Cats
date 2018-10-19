@@ -1,3 +1,4 @@
-interface INavBarProps {
-  navbarItems: INavbarItem[];
-}
+interface INavBarProps extends IRouteProps {
+  buttons: IRedirectButtonProps[];
+  currentUrl: string;
+} 

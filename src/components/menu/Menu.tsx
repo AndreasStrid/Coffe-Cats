@@ -1,12 +1,19 @@
 import * as React from "react";
 import List from "../list/List";
 import "./MenuStyle.css";
+import Route from "src/pages/Route";
 
-class Menu extends React.Component<IRedirectButtonsProps> {
+class Menu extends Route<INavBarProps> {
   public render() {
-    console.log(" LIST ", this.props.buttons);
-    return <List list={this.props.buttons} style={"menu"} />;
-  }
+
+    return (
+      <div>
+        <div className={"menu"}>
+          <List list={this.props.buttons} style={'menu'} />; // ListStyle.MENU
+    </div>
+        <div className="contentGrid">{this.pageRenderer(this.props.currentUrl)}</div>
+      </div>
+  });
 }
 
 export default Menu;
