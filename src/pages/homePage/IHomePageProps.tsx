@@ -1,6 +1,3 @@
-import IH1PImageProps from "../../components/h1PImage/IH1PImageProps";
-
 interface IHomePageProps {
-  H1PImageList: IH1PImageProps[];
+  H1PImageList: IH1P1ImageProps[];
 }
-export default IHomePageProps;

@@ -1,4 +1,4 @@
-interface ILoginBoxProps {
+interface LoginBoxProps {
   label: string;
   stateNames: string[];
 }

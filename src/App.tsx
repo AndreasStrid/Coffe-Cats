@@ -1,105 +1,92 @@
 import * as React from "react";
 import "./App.css";
-import Menu from "./components/menu/Menu";
 import Navbar from "./components/navigation/NavBar";
-import IRedirectButtonProps from "./components/redirectButton/IRedirectButtonProps";
-import {
-  ABOUT_PAGE,
-  BOOKING_PAGE,
-  HOME_PAGE,
-  LOGIN_PAGE,
-  NAVBAR_BUTTONS,
-  PROFILE_PAGE
-} from "./content/Pages";
+import { NAVBAR_BUTTONS, MENU_BUTTONS } from "src/content/RedirectButtons";
+import { HOME_PAGE, SIGN_IN_PAGE, SIGN_UP_PAGE } from "src/content/Pages"
+import Menu from "./components/menu/Menu";
 import HomePage from "./pages/homePage/HomePage";
-import IPage from "./pages/IPage";
-import LoginPageComp from "./pages/login/LoginPage";
+import Login from "./objects/Login";
+import LoginPage from "src/pages/login/LoginPage";
 
-interface IState {
-  currentPage: string;
-}
+const tempPages = [{ url: 'temp', component: <p> temp </p> }];
+const currentUrl = document.location.pathname;
 
-class App extends React.Component<{}, IState> implements IPage {
+class App extends React.Component<{}> {
   public RENDER_PAGE_ERROR: "Couldn't render this page";
   constructor() {
     super({});
-    this.state = { currentPage: HOME_PAGE.url };
-    history.pushState("", HOME_PAGE.name, HOME_PAGE.url);
 
-    this.redirect = this.redirect.bind(this);
-
-    this.setUpRedirects();
   }
 
   public render() {
-    const page = this.pageRenderer(this.state.currentPage);
-    const menu = this.menuRenderer(this.state.currentPage);
-
     return (
+
       <div className="appGrid">
         <div className="navBarGrid">
-          <Navbar buttons={NAVBAR_BUTTONS} />
+          <Navbar currentUrl={currentUrl} buttons={NAVBAR_BUTTONS} pages={this.createMenu()} />
         </div>
-        <div className="menuGrid">{menu}</div>
-        <div className="contentGrid">{page}</div>
+        {/* <div className="contentGrid">{page}</div> */}
       </div>
+
     );
   }
-  public pageRenderer(pageSelected: string): JSX.Element {
-    if (pageSelected === HOME_PAGE.url) {
-      return <HomePage H1PImageList={HOME_PAGE.H1PImageList} />;
-      // <HomePage H1PImageList={HOME_PAGE.H1PImageComponetns} />;
-    } else if (pageSelected === LOGIN_PAGE.url) {
-      return <LoginPageComp />;
+  public createMenu(): IPage[] {
+    let menuList: IPage[];
+    menuList = [];
+    for (let menu of MENU_BUTTONS) {
+      menuList.push({ url: currentUrl, component: <Menu currentUrl={currentUrl} buttons={menu} pages={this.createPages()} /> });
     }
-    // else if (pageSelected === PAGES.ABOUT_PAGE.url) {
-    //   return ABOUT_PAGE;
-    // }
-    // else if (pageSelected === PAGES.BOOKING_PAGE.url) {
-    //   return BOOKING_PAGE;
-    // }
-    return <p>{this.RENDER_PAGE_ERROR}</p>;
-  }
+    return menuList;
 
-  public menuRenderer(pageSelected: string): JSX.Element {
-    if (pageSelected === ABOUT_PAGE.url) {
-      return <Menu buttons={ABOUT_PAGE.menuButtons} />;
-    } else if (pageSelected === BOOKING_PAGE.url) {
-      return <Menu buttons={BOOKING_PAGE.menuButtons} />;
-    } else if (pageSelected === HOME_PAGE.url) {
-      return <Menu buttons={HOME_PAGE.menuButtons} />;
-    } else if (pageSelected === LOGIN_PAGE.url) {
-      return <Menu buttons={LOGIN_PAGE.menuButtons} />;
-    } else if (pageSelected === PROFILE_PAGE.url) {
-      return <Menu buttons={PROFILE_PAGE.menuButtons} />;
-    }
-    return <p>dd</p>;
   }
-  public setUpRedirects(): void {
-    NAVBAR_BUTTONS.map((item: IRedirectButtonProps) => {
-      item.redirect = this.redirect;
-    });
-    ABOUT_PAGE.menuButtons.map((item: IRedirectButtonProps) => {
-      item.redirect = this.redirect;
-    });
-    BOOKING_PAGE.menuButtons.map((item: IRedirectButtonProps) => {
-      item.redirect = this.redirect;
-    });
-    HOME_PAGE.menuButtons.map((item: IRedirectButtonProps) => {
-      item.redirect = this.redirect;
-    });
-    LOGIN_PAGE.menuButtons.map((item: IRedirectButtonProps) => {
-      item.redirect = this.redirect;
-    });
-    PROFILE_PAGE.menuButtons.map((item: IRedirectButtonProps) => {
-      item.redirect = this.redirect;
-    });
-  }
+  public createPages(): IPage[] {
+    let pageList: IPage[];
+    pageList = [];
+    pageList.push({ url: currentUrl, component: <HomePage H1PImageList={HOME_PAGE} /> });
+    pageList.push({ url: currentUrl, component: <LoginPage label={SIGN_IN_PAGE} /> });
+    pageList.push({ url: currentUrl, component: <HomePage H1PImageList={HOME_PAGE} /> });
+    pageList.push({ url: currentUrl, component: <HomePage H1PImageList={HOME_PAGE} /> });
+    return pageList;
 
-  public redirect(name: string, url: string): void {
-    history.pushState("", name, url);
-    this.setState({ currentPage: document.location.pathname });
   }
+  // public createPages(): IPage[] {
+  //   let pageList: IPage[];
+  //   pageList = [];
+  //   for (let page of PAGES) {
+  //     pageList.push({ url: currentUrl, component: <Menu buttons={menu} pages={tempPages} currentUrl={currentUrl} /> });
+  //   }
+  // }
+
+  // public pageRenderer(pageSelected: string): JSX.Element {
+  //   if (pageSelected === HOME_PAGE.url) {
+  //     return <HomePage H1PImageList={HOME_PAGE.H1PImageList} />;
+  //     // <HomePage H1PImageList={HOME_PAGE.H1PImageComponetns} />;
+  //   } else if (pageSelected === LOGIN_PAGE.url) {
+  //     return <LoginPageComp />;
+  //   }
+  //   // else if (pageSelected === PAGES.ABOUT_PAGE.url) {
+  //   //   return ABOUT_PAGE;
+  //   // }
+  //   // else if (pageSelected === PAGES.BOOKING_PAGE.url) {
+  //   //   return BOOKING_PAGE;
+  //   // }
+  //   return <p>{this.RENDER_PAGE_ERROR}</p>;
+  // }
+
+  // public menuRenderer(pageSelected: string): JSX.Element {
+  //   if (pageSelected === ABOUT_PAGE.url) {
+  //     return <Menu buttons={ABOUT_PAGE.menuButtons} />;
+  //   } else if (pageSelected === BOOKING_PAGE.url) {
+  //     return <Menu buttons={BOOKING_PAGE.menuButtons} />;
+  //   } else if (pageSelected === HOME_PAGE.url) {
+  //     return <Menu buttons={HOME_PAGE.menuButtons} />;
+  //   } else if (pageSelected === LOGIN_PAGE.url) {
+  //     return <Menu buttons={LOGIN_PAGE.menuButtons} />;
+  //   } else if (pageSelected === PROFILE_PAGE.url) {
+  //     return <Menu buttons={PROFILE_PAGE.menuButtons} />;
+  //   }
+  //   return <p>dd</p>;
+  // }
 }
 
 export default App;

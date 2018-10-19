@@ -1,8 +1,6 @@
 import * as React from "react";
 import H1PImage from "../../components/h1PImage/H1PImage";
-import IH1PImageProps from "../../components/h1PImage/IH1PImageProps";
 import "./HomPageStyle.css";
-import IHomePageProps from "./IHomePageProps";
 
 class HomePage extends React.Component<IHomePageProps> {
   constructor(props: IHomePageProps) {
@@ -19,10 +17,10 @@ class HomePage extends React.Component<IHomePageProps> {
     );
   }
   public createHomePageComponents(
-    components: IH1PImageProps[]
+    components: IH1P1ImageProps[]
   ): JSX.Element {
     const H1PImageElements = components.map(
-      (component: IH1PImageProps) => {
+      (component: IH1P1ImageProps) => {
         return (
           <H1PImage
             h1={component.h1}
