@@ -1,11 +1,11 @@
 import * as React from "react";
 
-class LoginBox extends React.Component<ILoginBoxProps, ILoginBoxState> {
+class LoginBox extends React.Component<LoginBoxProps, LoginBoxState> {
   constructor(props: any) {
     super(props);
     this.state = {
       password: "",
-      userName: "",
+      userName: ""
     };
 
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -16,12 +16,15 @@ class LoginBox extends React.Component<ILoginBoxProps, ILoginBoxState> {
       <form className="loginBox" onSubmit={this.handleSubmit}>
         <h1> {this.props.label} </h1>
         {this.props.stateNames.map((stateName: string) => {
-          return (this.renderInputBox((stateName.charAt(0).toUpperCase() + stateName.slice(1)), stateName))
+          return this.renderInputBox(
+            stateName.charAt(0).toUpperCase() + stateName.slice(1),
+            stateName
+          );
         })}
         <div>
           <button type="submit" onClick={this.handleSubmit}>
             Login
-            </button>
+          </button>
         </div>
       </form>
     );

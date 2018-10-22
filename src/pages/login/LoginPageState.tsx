@@ -1,5 +1,4 @@
-interface ILoginPageState extends IPageState {
-    userName: string;
-    password: string;
+interface LoginPageState extends IPageState {
+  userName: string;
+  password: string;
 }
-

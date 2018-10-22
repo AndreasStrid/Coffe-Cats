@@ -1,14 +1,14 @@
 import * as React from "react";
 import "./App.css";
 import Navbar from "./components/navigation/NavBar";
-import { NAVBAR_BUTTONS, MENU_BUTTONS } from "src/content/RedirectButtons";
-import { HOME_PAGE, SIGN_IN_PAGE, SIGN_UP_PAGE } from "src/content/Pages"
+import {
+  NAVBAR_BUTTONS,
+  MENU_BUTTONS
+} from "src/content/RedirectButtons";
+import { HOME_PAGE, SIGN_IN_PAGE, SIGN_UP_PAGE } from "src/content/Pages";
 import Menu from "./components/menu/Menu";
 import HomePage from "./pages/homePage/HomePage";
-import Login from "./objects/Login";
 import LoginPage from "src/pages/login/LoginPage";
-
-const tempPages = [{ url: 'temp', component: <p> temp </p> }];
 const currentUrl = document.location.pathname;
 
 class App extends React.Component<{}> {
@@ -19,35 +19,59 @@ class App extends React.Component<{}> {
 
   public render() {
     return (
-
       <div className="appGrid">
         <div className="navBarGrid">
-          <Navbar currentUrl={currentUrl} buttons={NAVBAR_BUTTONS} pages={this.createMenu()} />
+          <Navbar
+            currentUrl={currentUrl}
+            buttons={NAVBAR_BUTTONS}
+            pages={this.createMenu()}
+          />
         </div>
         {/* <div className="contentGrid">{page}</div> */}
       </div>
-
     );
   }
   public createMenu(): IPage[] {
     let menuList: IPage[];
     menuList = [];
-    for (let menu of MENU_BUTTONS) {
-      menuList.push({ url: currentUrl, component: <Menu currentUrl={currentUrl} buttons={menu} pages={this.createPages()} /> });
+    for (const menu of MENU_BUTTONS) {
+      menuList.push({
+        url: currentUrl,
+        component: (
+          <Menu
+            currentUrl={currentUrl}
+            buttons={menu}
+            pages={this.createPages()}
+          />
+        )
+      });
     }
     return menuList;
-
   }
   public createPages(): IPage[] {
     let pageList: IPage[];
     pageList = [];
-    pageList.push({ url: currentUrl, component: <HomePage H1PImageList={HOME_PAGE} /> });
-    pageList.push({ url: currentUrl, component: <LoginPage loginBox={SIGN_IN_PAGE} /> });
-    pageList.push({ url: currentUrl, component: <LoginPage loginBox={SIGN_UP_PAGE} /> });
-    pageList.push({ url: currentUrl, component: <HomePage H1PImageList={HOME_PAGE} /> });
-    pageList.push({ url: currentUrl, component: <HomePage H1PImageList={HOME_PAGE} /> });
+    pageList.push({
+      url: currentUrl,
+      component: <HomePage H1PImageList={HOME_PAGE} />
+    });
+    pageList.push({
+      url: currentUrl,
+      component: <LoginPage loginBox={SIGN_IN_PAGE} />
+    });
+    pageList.push({
+      url: currentUrl,
+      component: <LoginPage loginBox={SIGN_UP_PAGE} />
+    });
+    pageList.push({
+      url: currentUrl,
+      component: <HomePage H1PImageList={HOME_PAGE} />
+    });
+    pageList.push({
+      url: currentUrl,
+      component: <HomePage H1PImageList={HOME_PAGE} />
+    });
     return pageList;
-
   }
   // public createPages(): IPage[] {
   //   let pageList: IPage[];

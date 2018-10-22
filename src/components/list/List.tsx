@@ -13,9 +13,12 @@ class List extends React.Component<IListProps> {
   public createItemList(list: IRedirectButtonProps[]): JSX.Element {
     const listElement = list.map((item: IRedirectButtonProps) => {
       return (
-        <li key={item.name}>
-          <Link to={item.url}> {item.name} </Link>
-        </li>
+        <RedirectButton
+          redirect={item.redirect}
+          name={item.name}
+          url={item.url}
+          key={item.name}
+        />
       );
     });
     return <ul> {listElement} </ul>;

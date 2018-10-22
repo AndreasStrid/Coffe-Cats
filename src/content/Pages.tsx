@@ -15,17 +15,13 @@ const HOME_PAGE = [
   }
 ];
 
-const SIGN_IN_PAGE = [
-  {
-    label: "Login",
-    stateNames: ["userName", "password"]
-  }
-];
-const SIGN_UP_PAGE = [
-  {
-    label: "Login",
-    stateNames: ["userName", "password"]
-  }
-];
+const SIGN_IN_PAGE = {
+  label: "Login",
+  stateNames: ["userName", "password"]
+};
+const SIGN_UP_PAGE = {
+  label: "Login",
+  stateNames: ["userName", "password"]
+};
 
 export { HOME_PAGE, SIGN_IN_PAGE, SIGN_UP_PAGE };
