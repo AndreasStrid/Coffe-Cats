@@ -1,28 +1,60 @@
 import * as React from "react";
-// import List from "../list/List";
 import "./NavBarStyle.css";
 import List from "../list/List";
-import Route from "src/pages/Route";
-// import Menu from "../menu/Menu";
-// ListStyle.NAVBAR
+import { MENU_BUTTONS_ABOUT, MENU_BUTTONS_BOOKING, MENU_BUTTONS_HOME, MENU_BUTTONS_PROFILE, MENU_BUTTONS_SIGN } from "src/content/RedirectButtons"
+import Menu from "src/components/menu/Menu";
 
-class Navbar extends Route<INavBarProps> {
-  constructor(props: INavBarProps) {
+class Navbar extends React.Component<RedirectButtonsProps, RouteState> {
+  constructor(props: RedirectButtonsProps) {
     super(props);
-    console.log("Navbar props: ", props);
+    this.state = {
+      currentUrl: this.props.currentUrl,
+    }
+    this.redirect = this.redirect.bind(this);
+
   }
-  // ListStyle.NAVBAR
+
   public render() {
+    this.setRedirect()
+    const menu = this.menuRenderer(this.state.currentUrl);
+
     return (
-      <div>
-        <div className={"navBar"}>
-          <List list={this.props.buttons} style={"n "} />;
-        </div>
-        <div className="menuGrid">
-          {this.pageRenderer(this.props.currentUrl)}
-        </div>
+      <div className="navBarGrid">
+        <List list={this.props.buttons} style={"navBar"} />
+        {menu}
       </div>
     );
+  }
+
+  public menuRenderer(currentUrl: string): JSX.Element {
+    console.log(" NavBar Rendered ", currentUrl)
+    if (currentUrl.includes(this.props.buttons[0].url)) {
+      return <Menu key="0" buttons={MENU_BUTTONS_ABOUT} currentUrl={currentUrl} />
+    }
+    else if (currentUrl.includes(this.props.buttons[1].url)) {
+      return <Menu key="1" buttons={MENU_BUTTONS_BOOKING} currentUrl={currentUrl} />
+    }
+    else if (currentUrl.includes(this.props.buttons[2].url)) {
+      return <Menu key="2" buttons={MENU_BUTTONS_HOME} currentUrl={currentUrl} />
+    }
+    else if (currentUrl.includes(this.props.buttons[3].url)) {
+      return <Menu key="3" buttons={MENU_BUTTONS_PROFILE} currentUrl={currentUrl} />
+    }
+    else if (currentUrl.includes(this.props.buttons[4].url)) {
+      return <Menu key="4" buttons={MENU_BUTTONS_SIGN} currentUrl={currentUrl} />
+    }
+    return <p> menuRenderer ERROR </p>
+
+  }
+  public setRedirect() {
+    this.props.buttons.map((button: RedirectButtonProps) => {
+      button.redirect = this.redirect;
+    })
+  }
+  public redirect(url: string): void {
+    console.log("Navbar redirect history push state: ", url)
+    history.pushState("", "", url);
+    this.setState({ currentUrl: url })
   }
 }
 

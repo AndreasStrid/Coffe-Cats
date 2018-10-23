@@ -32,7 +32,7 @@ class LoginBox extends React.Component<LoginBoxProps, LoginBoxState> {
 
   public renderInputBox(label: string, id: string) {
     return (
-      <div>
+      <div key={id}>
         <div>
           <label>{label}</label>
         </div>
@@ -49,8 +49,7 @@ class LoginBox extends React.Component<LoginBoxProps, LoginBoxState> {
   }
   public handleSubmit(event: React.FormEvent) {
     event.preventDefault();
-    // tslint:disable-next-line:no-console
-    console.log("hej");
+
     // this.state.user.login(this.state.name, this.state.password);
   }
   public handleOnChange(event: any) {

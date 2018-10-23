@@ -1,0 +1,3 @@
+interface RouteState {
+    currentUrl: string;
+}

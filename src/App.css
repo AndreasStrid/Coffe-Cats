@@ -1,5 +1,3 @@
-@import "GridLayout.css";
-
 :root {
   /* Colors */
   --background: rgb(226, 226, 226);
@@ -74,3 +72,14 @@ button {
   background-color: var(--dark);
   border: 0;
 }
+
+.appGrid {
+  grid-area: appGrid;
+  display: grid;
+  height: inherit;
+  width: inherit;
+  grid-template-areas:
+    "navBarGrid";
+  background: #fafa;
+}
+

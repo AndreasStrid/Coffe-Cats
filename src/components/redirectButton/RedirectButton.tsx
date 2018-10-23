@@ -1,7 +1,7 @@
 import * as React from "react";
 
-class RedirectButton extends React.Component<IRedirectButtonProps> {
-  constructor(props: IRedirectButtonProps) {
+class RedirectButton extends React.Component<RedirectButtonProps> {
+  constructor(props: RedirectButtonProps) {
     super(props);
     this.clickHandleRedirect = this.clickHandleRedirect.bind(this);
   }
@@ -12,8 +12,6 @@ class RedirectButton extends React.Component<IRedirectButtonProps> {
     );
   }
   public clickHandleRedirect(e: React.MouseEvent<HTMLElement>) {
-    // tslint:disable-next-line:no-console
-    console.log("hej:", this.props.name, this.props.url);
     this.props.redirect(this.props.url);
   }
 }

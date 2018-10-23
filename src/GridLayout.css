@@ -1,44 +1,7 @@
-.appGrid {
-  grid-area: appGrid;
-  display: grid;
-  height: inherit;
-  width: inherit;
-  grid-template-areas:
-    "navBarGrid navBarGrid"
-    "menuGrid contentGrid";
-  background: #fafa;
-}
 
-.menuGrid {
-  grid-area: menuGrid;
-  background: var(--background);
-  height: 100%;
-  width: var(--menuWidth);
-  display: grid;
-  overflow: hidden;
 
-  /* border: 2px solid var(--menu); */
-}
 
-.contentGrid {
-  grid-area: contentGrid;
-  background: var(--background);
-  height: calc(100vh - var(--navBarHeight));
-  width: calc(100vw - var(--menuWidth));
-  background-color: var(--dark);
-  display: grid;
-  grid-template-rows: auto;
-  overflow: hidden;
 
-  /* border: 2px solid var(--page); */
-}
 
-.navBarGrid {
-  grid-area: navBarGrid;
-  background: var(--background);
-  height: var(--navBarHeight);
-  width: 100vw;
-  /* overflow: visible; */
-  display: grid;
-  /* border: 2px solid var(--navbar);  */
-}
+
+

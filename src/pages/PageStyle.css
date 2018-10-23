@@ -1,0 +1,12 @@
+.contentGrid {
+    grid-area: contentGrid;
+    background: red;
+    height: calc(100vh - var(--navBarHeight));
+    width: calc(100vw - var(--menuWidth));
+    background-color: var(--dark);
+    display: grid;
+    grid-template-rows: auto;
+    overflow: hidden;
+  
+    /* border: 2px solid var(--page); */
+  }

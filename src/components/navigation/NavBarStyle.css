@@ -1,11 +1,27 @@
-.navBar{
+@import "../menu/MenuStyle.css";
+
+.navBarGrid {
+    grid-area: navBarGrid;
+    background: var(--dark);
     height: inherit;
     width: inherit;
-
+    /* overflow: visible; */
     display: grid;
-    /* grid-template-rows: auto;  */
-    justify-items: center;
-    background: var(--dark);
+    grid-template-areas:
+    "navBar"
+    "menuGrid";
+    /* border: 2px solid var(--navbar);  */
+}
+
+
+.navBar{
+  grid-area: navBar;
+  background: var(--dark);
+  height: var(--navBarHeight);
+  width: 100vw;
+  justify-items: center;
+  /* overflow: visible; */
+  display: grid;
 
     /* -webkit-box-shadow: 0 100px 60px -6px rgb(194, 18, 18); */
     /* border: 10px solid var(--light); */

@@ -1,5 +1,17 @@
 import { IMAGES } from "./Variables";
 
+
+const ABOUT_PAGE = {
+  text: "ABOUT_PAGE",
+};
+const BOOKING_PAGE = {
+  text: "BOOKING_PAGE",
+};
+
+const PROFILE_PAGE = {
+  text: "PROFILE_PAGE",
+};
+
 const HOME_PAGE = [
   {
     h1: "Cats",
@@ -24,4 +36,4 @@ const SIGN_UP_PAGE = {
   stateNames: ["userName", "password"]
 };
 
-export { HOME_PAGE, SIGN_IN_PAGE, SIGN_UP_PAGE };
+export { ABOUT_PAGE, BOOKING_PAGE, HOME_PAGE, PROFILE_PAGE, SIGN_IN_PAGE, SIGN_UP_PAGE };

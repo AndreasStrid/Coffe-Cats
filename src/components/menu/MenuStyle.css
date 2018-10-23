@@ -1,11 +1,25 @@
-.menu {
-  height: inherit;
-  width: inherit;
+@import "../../pages/PageStyle.css";
 
+.menuGrid {
+  grid-area: menuGrid;
+  height: calc(100vh - var(--navBarHeight));
+  width: inherit;
+  display: grid;
+  grid-template-areas:
+  "menu contentGrid";
+  overflow: hidden;
+
+  /* border: 2px solid var(--menu); */
+}
+
+.menu {
+  grid-area: menu;
+  height: inherit;
+  background: var(--grey);
+  width: var(--menuWidth);
   display: grid;
   /* grid-template-rows: auto;  */
   justify-content: center;
-  background: var(--grey);
 
   /* border: 2px solid var(--menu); */
 }

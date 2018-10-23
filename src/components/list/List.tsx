@@ -1,8 +1,9 @@
 import * as React from "react";
-import "../../App.css";
+import "src/components/navigation/NavBarStyle.css";
+import "src/components/menu/MenuStyle.css";
 import RedirectButton from "../redirectButton/RedirectButton";
 
-class List extends React.Component<IListProps> {
+class List extends React.Component<ListProps> {
   public render() {
     return (
       <div className={this.props.style}>
@@ -10,8 +11,8 @@ class List extends React.Component<IListProps> {
       </div>
     );
   }
-  public createItemList(list: IRedirectButtonProps[]): JSX.Element {
-    const listElement = list.map((item: IRedirectButtonProps) => {
+  public createItemList(list: RedirectButtonProps[]): JSX.Element {
+    const listElement = list.map((item: RedirectButtonProps) => {
       return (
         <RedirectButton
           redirect={item.redirect}
