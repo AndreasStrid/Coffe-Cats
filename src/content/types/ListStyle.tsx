@@ -3,4 +3,4 @@ enum ListStyle {
   NAVBAR = "navBar"
 }
 
-// export default ListStyle;
+export default ListStyle;

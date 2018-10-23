@@ -19,6 +19,8 @@ const URL = {
   SIGN_IN: "/sign/in"
 };
 
+const URL_ARRAY = [URL.ABOUT, URL.ABOUT_CAT, URL.BOOKING, URL.BOOKING_1, URL.HOME, URL.PROFILE, URL.PROFILE_PRÖ, URL.SIGN, URL.SIGN_UP, URL.SIGN_IN]
+
 const API_URL = {
   base: "http://locashost:30001",
   checkToken: "/checkToken",
@@ -67,5 +69,6 @@ export {
   IMAGES,
   SessionStorage,
   SUCCESS_MESSAGES,
-  URL
+  URL,
+  URL_ARRAY
 };

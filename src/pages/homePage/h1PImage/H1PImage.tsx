@@ -1,5 +1,4 @@
 import * as React from "react";
-import "../../App.css";
 import "./H1PImageStyle.css";
 
 class H1PImage extends React.Component<IH1P1ImageProps> {

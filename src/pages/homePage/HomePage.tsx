@@ -1,5 +1,5 @@
 import * as React from "react";
-import H1PImage from "../../components/h1PImage/H1PImage";
+import H1PImage from "./h1PImage/H1PImage";
 import "./HomPageStyle.css";
 
 class HomePage extends React.Component<IHomePageProps> {

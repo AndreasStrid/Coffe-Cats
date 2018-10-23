@@ -1,4 +1,4 @@
 interface ListProps {
-  style: string; // ListStyle
+  style: string;
   list: RedirectButtonProps[];
 }

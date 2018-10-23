@@ -1,12 +1,13 @@
 import * as React from "react";
-import List from "../list/List";
+import List from "src/components/list/List";
 import "./MenuStyle.css";
 import HomePage from "src/pages/homePage/HomePage";
 import { HOME_PAGE, SIGN_IN_PAGE, SIGN_UP_PAGE } from "src/content/Pages" // ABOUT_PAGE, BOOKING_PAGE, , PROFILE_PAGE,
 import { URL } from "src/content/Variables"
 import { MENU_BUTTONS_ABOUT, MENU_BUTTONS_BOOKING, MENU_BUTTONS_HOME, MENU_BUTTONS_PROFILE, MENU_BUTTONS_SIGN } from "../../content/RedirectButtons";
 import LoginPage from "../../pages/login/LoginPage";
-// ListStyle.MENU
+import ListStyle from "src/content/types/ListStyle"
+
 class Menu extends React.Component<RedirectButtonsProps, RouteState> {
   constructor(props: RedirectButtonsProps) {
     super(props);
@@ -15,37 +16,30 @@ class Menu extends React.Component<RedirectButtonsProps, RouteState> {
     }
     this.redirect = this.redirect.bind(this);
 
-
   }
   public render() {
     this.setRedirect()
     const page = this.pageRenderer(this.state.currentUrl);
     return (
       <div className="menuGrid">
-        <List list={this.props.buttons} style={"menu"} />
+        <List list={this.props.buttons} style={ListStyle.MENU} />
         <div className="contentGrid" >
           {page}
         </div>
       </div>
     );
   }
-  public componentDidMount() {
-    console.log(" hej ")
-  }
 
   public setRedirect() {
     this.props.buttons.map((button: RedirectButtonProps) => {
-      console.log(" button: ", button)
       button.redirect = this.redirect;
     })
   }
   public redirect(url: string): void {
-    console.log("Menu redirect history push state: ", url)
     history.pushState("", "", url);
     this.setState({ currentUrl: url })
   }
   public pageRenderer(currentUrl: string): JSX.Element {
-    console.log(" Menu Rendered ", currentUrl)
     if (currentUrl.includes(URL.ABOUT)) {
       return this.aboutPages(currentUrl);
     }
@@ -99,7 +93,6 @@ class Menu extends React.Component<RedirectButtonsProps, RouteState> {
       return <LoginPage key="1" loginBox={SIGN_UP_PAGE} />
     }
     return <p> MENU Sign page ERROR </p>;
-
   }
 }
 

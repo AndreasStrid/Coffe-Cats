@@ -1,7 +1,7 @@
 import * as React from "react";
-import "src/components/navigation/NavBarStyle.css";
-import "src/components/menu/MenuStyle.css";
-import RedirectButton from "../redirectButton/RedirectButton";
+import "src/navigation/navBar/NavBarStyle.css";
+import "src/navigation/menu/Menu";
+import RedirectButton from "src/navigation/redirectButton/RedirectButton";
 
 class List extends React.Component<ListProps> {
   public render() {
