@@ -1,3 +1,0 @@
-interface IRouteProps {
-  pages: IPage[];
-}

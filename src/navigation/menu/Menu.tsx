@@ -6,7 +6,7 @@ import { HOME_PAGE, SIGN_IN_PAGE, SIGN_UP_PAGE } from "src/content/Pages" // ABO
 import { URL } from "src/content/Variables"
 import { MENU_BUTTONS_ABOUT, MENU_BUTTONS_BOOKING, MENU_BUTTONS_HOME, MENU_BUTTONS_PROFILE, MENU_BUTTONS_SIGN } from "../../content/RedirectButtons";
 import LoginPage from "../../pages/login/LoginPage";
-import ListStyle from "src/content/types/ListStyle"
+import ListStyle from "src/types/ListStyle"
 
 class Menu extends React.Component<RedirectButtonsProps, RouteState> {
   constructor(props: RedirectButtonsProps) {

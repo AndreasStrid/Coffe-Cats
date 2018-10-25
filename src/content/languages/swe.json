@@ -1,0 +1,24 @@
+{
+    "about_menu_cat_button": "Katt",
+    "about_nav_button": "Om",
+    "booking_menu_book_button": "Böök",
+    "booking_nav_button": "Booka",
+    "home_menu_home_button": "Hem",
+    "home_nav_button": "Hem",
+    "profile_menu_profile_button": "Pröfil",
+    "profile_nav_button": "Profil",
+    "sing_nav_button": "Skriv/in/upp",
+    "sign_menu_sing_up_button": "Skriv In",
+    "sign_menu_sing_in_button": "Skriv Upp",
+    "sign_page_sign_in_button": "Logga in",
+    "home_page_comp1_h1": "Katter",
+    "home_page_comp1_p": "Cats are fluffy, awesome and the reason why the internet exist. Just by looking at their cute faces makes you happy. So you are not buying a pet you are buying happines. In this case renting happines for a reasoniable price",
+    "home_page_comp2_h1": "Kaffe",
+    "home_page_comp2_p": "Coffe is good, Coffe is warm, Coffie is life, Drink Coffe and you will see your purpose in life",
+    "sign_in_page_label": "Skriv In",
+    "sign_up_page_label": "Skriv Up",
+    "sign_inup_stateNames": [
+        "andvändarnamn",
+        "lösenord"
+    ]
+}

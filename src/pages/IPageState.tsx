@@ -1,5 +1,0 @@
-
-interface IPageState {
-    currentPage: string
-}
-

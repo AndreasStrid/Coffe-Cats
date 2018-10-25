@@ -22,6 +22,9 @@ class Routing {
         history.pushState("", "", this.mainPage);
         return this.mainPage;
     }
+    public static reloadApplication(currentUrl: string): void {
+        document.location.href = currentUrl;
+    }
 
 }
 

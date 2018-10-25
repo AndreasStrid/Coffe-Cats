@@ -1,14 +1,16 @@
 import axios from "axios";
 // import * as request from 'request';
 import { API_URL } from '../content/Variables'
+// import { resolve } from "url";
 
 
-async function login(name: string, password: string) {
+function login(name: string, password: string): string { // cb: (data: string) => string
 
-    return await axios.post(API_URL.base + API_URL.loginIn, { name, password })
+    axios.post(API_URL.base + API_URL.loginIn, { name, password })
         .then((res) => {
             // tslint:disable-next-line:no-console
-            console.log(res);
+            console.log(res.data);
+            // cb(res.data);
             return res;
         })
         .catch((error) => {
@@ -16,9 +18,11 @@ async function login(name: string, password: string) {
             console.log(error);
             return error;
         });
+    return "apa";
 }
 
 async function checkToken(token: string | null) {
+
     return await axios.post(API_URL.base + API_URL.checkToken, { token })
         .then((res) => {
             // tslint:disable-next-line:no-console

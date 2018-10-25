@@ -2,14 +2,9 @@ import * as React from "react";
 import "./LoginPageStyle.css";
 import LoginBox from "src/pages/login/components/loginBox/LoginBox";
 
-class LoginPage extends React.Component<LoginProps, LoginPageState> {
+class LoginPage extends React.Component<LoginProps> {
   constructor(props: any) {
     super(props);
-    this.state = {
-      currentPage: document.location.pathname,
-      password: "",
-      userName: ""
-    };
   }
   public render() {
     return (

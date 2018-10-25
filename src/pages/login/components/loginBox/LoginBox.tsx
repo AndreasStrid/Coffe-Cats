@@ -1,11 +1,15 @@
 import * as React from "react";
+import StorageKey from "src/types/StorageKey";
+import User from "src/types/User";
+import Storage from "src/types/Storage";
 
 class LoginBox extends React.Component<LoginBoxProps, LoginBoxState> {
   constructor(props: any) {
     super(props);
     this.state = {
       password: "",
-      userName: ""
+      userName: "",
+      loginMessage: "",
     };
 
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -23,9 +27,10 @@ class LoginBox extends React.Component<LoginBoxProps, LoginBoxState> {
         })}
         <div>
           <button type="submit" onClick={this.handleSubmit}>
-            Login
+            {this.props.label}
           </button>
         </div>
+        <p> {this.state.loginMessage}</p>
       </form>
     );
   }
@@ -49,8 +54,8 @@ class LoginBox extends React.Component<LoginBoxProps, LoginBoxState> {
   }
   public handleSubmit(event: React.FormEvent) {
     event.preventDefault();
-
-    // this.state.user.login(this.state.name, this.state.password);
+    const user: User = Storage.getItem(StorageKey.USER);
+    this.setState({ loginMessage: user.login(this.state.userName, this.state.password) })
   }
   public handleOnChange(event: any) {
     // @ts-ignore these can never be null, use ignore to save code

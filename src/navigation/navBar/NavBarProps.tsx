@@ -1,5 +1,6 @@
-interface NavBarProps {
-  navBarItems: RedirectButtonProps[]
+interface NavBarProps extends RedirectButtonsProps {
+  swe: JSX.Element;
+  eng: JSX.Element;
 }
 
 

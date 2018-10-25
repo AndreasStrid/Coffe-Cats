@@ -8,23 +8,37 @@
     /* overflow: visible; */
     display: grid;
     grid-template-areas:
-    "navBar"
-    "menuGrid";
+    "navBar languages"
+    "menuGrid menuGrid";
     /* border: 2px solid var(--navbar);  */
 }
 
+.languages {
+    grid-area: languages;
+    display: grid;
+    grid-template-columns: auto auto;
+    justify-content: center;
+    height: var(--navBarHeight);
+    width: 120px;
+    
+}
 
 .navBar{
   grid-area: navBar;
   background: var(--dark);
   height: var(--navBarHeight);
-  width: 100vw;
+  width: calc(100vw - 132px);
   justify-items: center;
   /* overflow: visible; */
   display: grid;
 
     /* -webkit-box-shadow: 0 100px 60px -6px rgb(194, 18, 18); */
     /* border: 10px solid var(--light); */
+}
+img {
+    height: 36px;
+    width: 36px;
+    margin: 32px 12px 0px 12px;
 }
 
 .navBar li {

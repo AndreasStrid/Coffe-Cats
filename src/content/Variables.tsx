@@ -1,9 +1,13 @@
 import * as CAT_IMAGE_IMP from "./images/cat_in_coffecup.jpg";
 import * as COFFE_IMAGE from "./images/coffe_cat_art.jpg";
+import * as SWE_FLAG_IMAGE from "./images/swe_flag.svg";
+import * as ENG_FLAG_IMAGE from "./images/eng_flag.svg";
 
 const IMAGES = {
-  CAT_COFFEE_IMAGE: { name: "CAT_COFFEE_IMAGE", img: COFFE_IMAGE },
-  CAT_IMAGE: { name: "CAT_IMAGE", img: CAT_IMAGE_IMP }
+  CAT_COFFEE: { name: "CAT_COFFEE_IMAGE", img: COFFE_IMAGE },
+  CAT: { name: "CAT_IMAGE", img: CAT_IMAGE_IMP },
+  SWE_FLAG: { name: "swe.json", img: SWE_FLAG_IMAGE },
+  ENG_FLAG: { name: "eng.json", img: ENG_FLAG_IMAGE }
 };
 
 const URL = {
@@ -27,48 +31,10 @@ const API_URL = {
   loginIn: "/login"
 };
 
-const SUCCESS_MESSAGES = { login: "Login Successful" };
-
-const ERROR_MESSAGES = { login: "Failed to login" };
-
-enum SessionStorage {
-  TOKEN = "token"
-}
-
-enum CustomerLevel {
-  BRONZE = 1,
-  SIlVER = 2,
-  GOLD = 3
-}
-
-// enum GridStyle {
-//     APP_GRID= 'appGrid',
-//     NAVBAR_GRID= "navBarGrid",
-//     MENU_GRID = "menuGrid",
-//     CONTENT_GRID= "contentGrid"
-// }
-
-// enum PageStyle {
-//     MENU = 'menu',
-//     NAVBAR = 'navBar',
-//     HOME_PAGE = 'homePage'
-// }
-
-// enum ComponentStyle{
-//     H1PIMAGE: ''
-// }
-
-// funci: ((e: React.MouseEvent<HTMLElement>) => void)[];
-// funci: Array<((e: React.MouseEvent<HTMLElement>) => void)>;
-// funci: Array<(<T>(arg1: T) => any)>;
 
 export {
   API_URL,
-  CustomerLevel,
-  ERROR_MESSAGES,
   IMAGES,
-  SessionStorage,
-  SUCCESS_MESSAGES,
   URL,
   URL_ARRAY
 };

@@ -3,10 +3,10 @@ import "./NavBarStyle.css";
 import List from "src/components/list/List";
 import { MENU_BUTTONS_ABOUT, MENU_BUTTONS_BOOKING, MENU_BUTTONS_HOME, MENU_BUTTONS_PROFILE, MENU_BUTTONS_SIGN } from "src/content/RedirectButtons"
 import Menu from "../menu/Menu";
-import ListStyle from "src/content/types/ListStyle";
+import ListStyle from "src/types/ListStyle";
 
-class Navbar extends React.Component<RedirectButtonsProps, RouteState> {
-  constructor(props: RedirectButtonsProps) {
+class Navbar extends React.Component<NavBarProps, RouteState> {
+  constructor(props: NavBarProps) {
     super(props);
     this.state = {
       currentUrl: this.props.currentUrl,
@@ -21,6 +21,14 @@ class Navbar extends React.Component<RedirectButtonsProps, RouteState> {
 
     return (
       <div className="navBarGrid">
+        <div className="languages">
+          <div>
+            {this.props.swe}
+          </div>
+          <div>
+            {this.props.eng}
+          </div>
+        </div>
         <List list={this.props.buttons} style={ListStyle.NAVBAR} />
         {menu}
       </div>
