@@ -1,7 +1,8 @@
 enum StorageKey {
-    TOKEN = "token",
-    USER = "user",
-    LANGUAGE = "language"
+    TOKEN = "TOKEN",
+    USER = "USER",
+    LANGUAGE = "LANGUAGE",
+    URL = "URL"
 }
 
 export default StorageKey;

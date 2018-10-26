@@ -20,7 +20,8 @@ const URL = {
   PROFILE_PRÖ: "/profile/prö",
   SIGN: "/sign",
   SIGN_UP: "/sign/up",
-  SIGN_IN: "/sign/in"
+  SIGN_IN: "/sign/in",
+  SIGN_OUT: "/sign/out"
 };
 
 const URL_ARRAY = [URL.ABOUT, URL.ABOUT_CAT, URL.BOOKING, URL.BOOKING_1, URL.HOME, URL.PROFILE, URL.PROFILE_PRÖ, URL.SIGN, URL.SIGN_UP, URL.SIGN_IN]

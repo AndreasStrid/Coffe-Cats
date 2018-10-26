@@ -1,0 +1,3 @@
+interface SignedOutBoxProps {
+    label: string
+}

@@ -1,0 +1,3 @@
+interface CustomerLevel {
+    customerLevel: number;
+}

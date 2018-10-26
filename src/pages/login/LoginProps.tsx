@@ -1,5 +1,0 @@
-
-interface LoginProps {
-    loginBox: LoginBoxProps
-}
-

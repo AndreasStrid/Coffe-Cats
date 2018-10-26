@@ -6,6 +6,8 @@ import StorageKey from "../types/StorageKey";
 
 
 const loadLanguage = () => {
+    // Need to set all objects to their default values if it is the first time a new person uses the website
+    Storage.setObjects();
     if (Storage.getItem(StorageKey.LANGUAGE) === "eng.json") {
         return english;
     }

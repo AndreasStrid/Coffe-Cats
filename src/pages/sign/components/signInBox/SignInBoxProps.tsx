@@ -1,4 +1,4 @@
-interface LoginBoxProps {
+interface SignInBoxProps {
   label: string;
   stateNames: string[];
 }

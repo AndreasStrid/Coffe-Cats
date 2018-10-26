@@ -10,11 +10,9 @@ class User {
     public name: string;
     public money: number;
     public customerLevel: CustomerLevel;
-    public token: string;
+    public token: string | null;
 
-    public loggedIn: boolean;
-
-    constructor(name: string, money: number, token: string, customerLevel: CustomerLevel) {
+    constructor(name: string, money: number, token: string | null, customerLevel: CustomerLevel) {
         this.name = name;
         this.money = money;
         this.token = token;
@@ -24,7 +22,7 @@ class User {
     public clean() {
         this.name = "";
         this.money = 0;
-        this.token = "";
+        this.token = null;
         this.customerLevel = CustomerLevel.NULL;
     }
 
@@ -47,12 +45,12 @@ class User {
     }
     public logout() {
         this.clean();
+        Storage.setItem(StorageKey.USER, this);
     }
 
-    public isLoggedIn(): boolean {
-        if (this.token != null) {
-            const valid = true; // TEMP checkToken(this.token);
-            return valid;
+    public isSignedIn(): boolean {
+        if (this.token !== null) {
+            return true;
         } else {
             return false;
         }

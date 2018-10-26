@@ -1,4 +1,4 @@
-.loginPage {
+.signPage {
   height: inherit;
   width: inherit;
   display: grid;
@@ -12,7 +12,12 @@
   /* justify-items: center; */
 }
 
-.loginBox {
+.signBoxGrid {
+  display: grid;
+  grid-template-columns: auto auto auto;
+}
+
+.signBox {
   /* overflow: auto;
   display: block; */
 
@@ -52,7 +57,7 @@
        1px 1px 0 #000;
 } */
 
-.loginBox:hover {
+.signBox:hover {
   /* Clip-path spanning the entire box so it's no longer hiding the full-width border. */
   clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
 }

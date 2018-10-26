@@ -35,10 +35,10 @@
     /* -webkit-box-shadow: 0 100px 60px -6px rgb(194, 18, 18); */
     /* border: 10px solid var(--light); */
 }
-img {
+.languages img {
     height: 36px;
     width: 36px;
-    margin: 32px 12px 0px 12px;
+    margin: 32px 18px 0px 0px;
 }
 
 .navBar li {

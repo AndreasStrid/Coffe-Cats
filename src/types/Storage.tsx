@@ -2,8 +2,9 @@ import User from "./User";
 import StorageKey from "./StorageKey";
 import CustomerLevel from "./CustomerLevel";
 
-const user = new User("", 0, "", CustomerLevel.NULL);
-let language = ""
+const user = new User("", 0, null, CustomerLevel.NULL);
+let language = null;
+let url = null;
 
 const Storage = {
 
@@ -22,6 +23,11 @@ const Storage = {
             language = localStorage.getItem(StorageKey.LANGUAGE)
             return language;
         }
+        else if (key === StorageKey.URL) {
+            // @ts-ignore
+            url = localStorage.getItem(StorageKey.URL)
+            return url;
+        }
 
     },
     setItem(key: StorageKey, data: any) {
@@ -31,6 +37,9 @@ const Storage = {
         else if (key === StorageKey.LANGUAGE) {
             localStorage.setItem(StorageKey.LANGUAGE, data);
         }
+        else if (key === StorageKey.URL) {
+            localStorage.setItem(StorageKey.URL, data);
+        }
     },
     setObjects() {
         if (localStorage.getItem(StorageKey.USER) === null) {
@@ -39,6 +48,9 @@ const Storage = {
         }
         if (localStorage.getItem(StorageKey.LANGUAGE) === null) {
             localStorage.setItem(StorageKey.LANGUAGE, "eng.json");
+        }
+        if (localStorage.getItem(StorageKey.URL) === null) {
+            localStorage.setItem(StorageKey.URL, document.location.pathname);
         }
     }
 }

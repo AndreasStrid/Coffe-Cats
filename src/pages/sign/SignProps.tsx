@@ -1,0 +1,5 @@
+
+interface SignPageProps {
+    refreshPage: () => void
+}
+

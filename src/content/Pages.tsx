@@ -17,8 +17,7 @@ const HOME_PAGE = [
     h1: language.home_page_comp1_h1,
     img: IMAGES.CAT.img,
     p: language.home_page_comp1_p
-  }
-  ,
+  },
   {
     h1: language.home_page_comp2_h1,
     img: IMAGES.CAT_COFFEE.img,
@@ -35,4 +34,8 @@ const SIGN_UP_PAGE = {
   stateNames: language.sign_inup_stateNames
 };
 
-export { ABOUT_PAGE, BOOKING_PAGE, HOME_PAGE, PROFILE_PAGE, SIGN_IN_PAGE, SIGN_UP_PAGE };
+const SIGN_OUT_PAGE = {
+  label: language.sign_out_page_label
+}
+
+export { ABOUT_PAGE, BOOKING_PAGE, HOME_PAGE, PROFILE_PAGE, SIGN_IN_PAGE, SIGN_UP_PAGE, SIGN_OUT_PAGE };

@@ -43,13 +43,14 @@ const MENU_BUTTONS_PROFILE = [
     redirect: notInitializedRedirect
   }
 ]
-const MENU_BUTTONS_SIGN = [
-  {
-    name: language.sign_menu_sing_up_button,
-    url: URL.SIGN_UP,
-    redirect: notInitializedRedirect
-  },
-  { name: language.sign_page_sign_in_button, url: URL.SIGN_IN, redirect: notInitializedRedirect }
+const MENU_BUTTONS_SIGN = [{}
+  // {
+  //   name: language.sign_menu_sing_up_button,
+  //   url: URL.SIGN_UP,
+  //   redirect: notInitializedRedirect
+  // },
+  // { name: language.sign_page_sign_in_button, url: URL.SIGN_IN, redirect: notInitializedRedirect },
+  // { name: language.sign_page_sign_out_button, url: URL.SIGN_IN, redirect: notInitializedRedirect }
 ]
 
 const NAVBAR_BUTTONS = [

@@ -2,8 +2,9 @@ import * as React from "react";
 import StorageKey from "src/types/StorageKey";
 import User from "src/types/User";
 import Storage from "src/types/Storage";
+import Routing from "src/navigation/Routing";
 
-class LoginBox extends React.Component<LoginBoxProps, LoginBoxState> {
+class SignInBox extends React.Component<SignInBoxProps, SignInBoxState> {
   constructor(props: any) {
     super(props);
     this.state = {
@@ -17,7 +18,7 @@ class LoginBox extends React.Component<LoginBoxProps, LoginBoxState> {
   }
   public render() {
     return (
-      <form className="loginBox" onSubmit={this.handleSubmit}>
+      <form className="signBox" onSubmit={this.handleSubmit}>
         <h1> {this.props.label} </h1>
         {this.props.stateNames.map((stateName: string) => {
           return this.renderInputBox(
@@ -52,11 +53,16 @@ class LoginBox extends React.Component<LoginBoxProps, LoginBoxState> {
       </div>
     );
   }
-  public handleSubmit(event: React.FormEvent) {
+  public async handleSubmit(event: React.FormEvent) {
     event.preventDefault();
     const user: User = Storage.getItem(StorageKey.USER);
     this.setState({ loginMessage: user.login(this.state.userName, this.state.password) })
+    // sleep 1.5 seconds before rendering new state
+    await new Promise(resolve => setTimeout(resolve, 1500));
+    Routing.reloadApplication(Storage.getItem(StorageKey.URL))
   }
+
+
   public handleOnChange(event: any) {
     // @ts-ignore these can never be null, use ignore to save code
     this.setState({ [event.target.id]: event.target.value });
@@ -70,4 +76,4 @@ class LoginBox extends React.Component<LoginBoxProps, LoginBoxState> {
   // }
 }
 
-export default LoginBox;
+export default SignInBox;
