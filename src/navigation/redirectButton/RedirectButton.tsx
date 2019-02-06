@@ -8,7 +8,7 @@ class RedirectButton extends React.Component<RedirectButtonProps> {
 
   public render() {
     return (
-      <li onClick={this.clickHandleRedirect}> {this.props.name} </li>
+      <li className="navBar-button" onClick={this.clickHandleRedirect}> {this.props.name} </li>
     );
   }
   public clickHandleRedirect(e: React.MouseEvent<HTMLElement>) {

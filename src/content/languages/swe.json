@@ -7,7 +7,7 @@
     "home_nav_button": "Hem",
     "profile_menu_profile_button": "Pröfil",
     "profile_nav_button": "Profil",
-    "sing_nav_button": "Skriv/in/upp",
+    "sing_nav_button": "Logga/in/ut",
     "sign_menu_sing_up_button": "Skriv In",
     "sign_menu_sing_in_button": "Skriv Upp",
     "sign_page_sign_in_button": "Logga in",
@@ -15,10 +15,11 @@
     "home_page_comp1_p": "Cats are fluffy, awesome and the reason why the internet exist. Just by looking at their cute faces makes you happy. So you are not buying a pet you are buying happines. In this case renting happines for a reasoniable price",
     "home_page_comp2_h1": "Kaffe",
     "home_page_comp2_p": "Coffe is good, Coffe is warm, Coffie is life, Drink Coffe and you will see your purpose in life",
-    "sign_in_page_label": "Skriv In",
-    "sign_up_page_label": "Skriv Up",
+    "sign_in_page_label": "Logga in",
+    "sign_up_page_label": "Registrera dig",
+    "sign_out_page_label": "Logga ut",
     "sign_inup_stateNames": [
-        "andvändarnamn",
-        "lösenord"
+        "Andvändarnamn",
+        "Lösenord"
     ]
 }

@@ -1,31 +1,29 @@
 import { URL_ARRAY, URL } from "src/content/Variables"
+import StorageKey from "src/types/StorageKey";
+import Storage from "src/types/Storage";
 
 class Routing {
 
-    public static mainPage = URL.HOME;
-
-    public static browserInput(browserUrl: string): string {
+    public static browserInput(browserUrl: string): void {
 
         const found = URL_ARRAY.find((url: string) => {
             return browserUrl === url;
         })
         if (found !== undefined) {
-            history.pushState("", "", found);
-            return found;
+            this.redirect(found);
         }
         else {
-            return this.redirectToMain();
+            this.redirect(URL.HOME);
         }
     }
 
-    public static redirectToMain(): string {
-        history.pushState("", "", this.mainPage);
-        return this.mainPage;
+    public static reloadBrowser(): void {
+        document.location.href = Storage.getItem(StorageKey.URL);
     }
-    public static reloadApplication(currentUrl: string): void {
-        document.location.href = currentUrl;
-    }
-
+    public static redirect(url: string): void {
+        history.pushState("", "", url);
+        Storage.setItem(StorageKey.URL, url);
+      }
 }
 
 export default Routing;

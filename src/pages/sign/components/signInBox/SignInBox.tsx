@@ -12,6 +12,8 @@ class SignInBox extends React.Component<SignInBoxProps, SignInBoxState> {
       userName: "",
       loginMessage: "",
     };
+    console.log("SignInBox props: ", JSON.stringify(this.props));
+    console.log("SignInBox state: ", JSON.stringify(this.state));
 
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleOnChange = this.handleOnChange.bind(this);
@@ -19,47 +21,59 @@ class SignInBox extends React.Component<SignInBoxProps, SignInBoxState> {
   public render() {
     return (
       <form className="signBox" onSubmit={this.handleSubmit}>
-        <h1> {this.props.label} </h1>
-        {this.props.stateNames.map((stateName: string) => {
-          return this.renderInputBox(
-            stateName.charAt(0).toUpperCase() + stateName.slice(1),
-            stateName
-          );
-        })}
+        <div>
+          <h1> {this.props.label} </h1>
+        </div>
+
+        <div>
+          <label> {this.props.stateNames[0]}</label>
+        </div>
+        <div>
+          <input
+            id={'userName'}
+            placeholder={this.props.stateNames[0]}
+            value={this.state.userName}
+            type="text"
+            onChange={this.handleOnChange}
+            required={true}
+          />
+        </div>
+
+      <div>
+          <label> {this.props.stateNames[1]}</label>
+        </div>
+        <div>
+          <input
+            id={'password'}
+            placeholder={this.props.stateNames[1]}
+            value={this.state.password}
+            type="text"
+            onChange={this.handleOnChange}
+            required={true}
+          />
+        </div>
+
+
         <div>
           <button type="submit" onClick={this.handleSubmit}>
             {this.props.label}
           </button>
+        </div>
+        <div>
+          <a onClick={this.props.switchSignBox}> {this.props.oppositeLabel} </a>
         </div>
         <p> {this.state.loginMessage}</p>
       </form>
     );
   }
 
-  public renderInputBox(label: string, id: string) {
-    return (
-      <div key={id}>
-        <div>
-          <label>{label}</label>
-        </div>
-        <input
-          id={id}
-          placeholder={label}
-          value={this.state[id]}
-          type="text"
-          onChange={this.handleOnChange}
-          required={true}
-        />
-      </div>
-    );
-  }
   public async handleSubmit(event: React.FormEvent) {
     event.preventDefault();
     const user: User = Storage.getItem(StorageKey.USER);
     this.setState({ loginMessage: user.login(this.state.userName, this.state.password) })
     // sleep 1.5 seconds before rendering new state
     await new Promise(resolve => setTimeout(resolve, 1500));
-    Routing.reloadApplication(Storage.getItem(StorageKey.URL))
+    Routing.reloadBrowser()
   }
 
 

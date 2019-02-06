@@ -8,26 +8,31 @@
     /* overflow: visible; */
     display: grid;
     grid-template-areas:
-    "navBar languages"
-    "menuGrid menuGrid";
+    "signStatus navBar languages"
+    "menuGrid menuGrid menuGrid";
     /* border: 2px solid var(--navbar);  */
+}
+
+.signStatus {
+    grid-area: signStatus;
+    display: grid;
+    grid-template-columns: auto auto;
+    justify-content: left;
+    height: var(--navBarHeight);
 }
 
 .languages {
     grid-area: languages;
     display: grid;
     grid-template-columns: auto auto;
-    justify-content: center;
+    justify-content: right;
     height: var(--navBarHeight);
-    width: 120px;
-    
 }
+
 
 .navBar{
   grid-area: navBar;
-  background: var(--dark);
   height: var(--navBarHeight);
-  width: calc(100vw - 132px);
   justify-items: center;
   /* overflow: visible; */
   display: grid;
@@ -41,7 +46,7 @@
     margin: 32px 18px 0px 0px;
 }
 
-.navBar li {
+.navBar-button {
     color: var(--light);
     font-size: 21px;
     display: inline-block;

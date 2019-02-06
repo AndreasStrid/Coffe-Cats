@@ -4,22 +4,23 @@ import "./MenuStyle.css";
 import HomePage from "src/pages/homePage/HomePage";
 import { HOME_PAGE } from "src/content/Pages" // ABOUT_PAGE, BOOKING_PAGE, , PROFILE_PAGE,
 import { URL } from "src/content/Variables"
-import { MENU_BUTTONS_ABOUT, MENU_BUTTONS_BOOKING, MENU_BUTTONS_HOME, MENU_BUTTONS_PROFILE } from "src/content/RedirectButtons";
-import { SIGN_IN_PAGE, SIGN_OUT_PAGE } from "src/content/Pages"
+import { MENU_BUTTONS_ABOUT, MENU_BUTTONS_BOOKING} from "src/content/RedirectButtons";
+// import { SIGN_IN_PAGE, SIGN_OUT_PAGE } from "src/content/Pages"
 import SignPage from "../../pages/sign/SignPage";
 import ListStyle from "src/types/ListStyle"
 import Storage from "src/types/Storage"
 import StorageKey from "src/types/StorageKey"
 import User from "src/types/User";
+import Routing from "../Routing";
+import ProfilePage from "src/pages/profile/ProfilePage";
 
-class Menu extends React.Component<RedirectButtonsProps, MenuState> {
+class Menu extends React.Component<RedirectButtonsProps, SignedInState> {
 
   constructor(props: RedirectButtonsProps) {
     super(props);
     const user: User = Storage.getItem(StorageKey.USER);
 
     this.state = {
-      currentUrl: Storage.getItem(StorageKey.URL),
       isSignedIn: user.isSignedIn()
     }
     this.redirect = this.redirect.bind(this);
@@ -29,9 +30,10 @@ class Menu extends React.Component<RedirectButtonsProps, MenuState> {
 
     return (
       <div className="menuGrid">
-        {this.displayMenu(this.state.currentUrl)}
+        {this.displayMenu(Storage.getItem(StorageKey.URL))}
         <div className="contentGrid" >
-          {this.pageRenderer(this.state.currentUrl)}
+          {this.pageRenderer(Storage.getItem(StorageKey.URL))}
+          
         </div>
       </div>
     );
@@ -39,8 +41,9 @@ class Menu extends React.Component<RedirectButtonsProps, MenuState> {
 
   public displayMenu(currentUrl: string): JSX.Element | null {
     if (currentUrl.includes(URL.SIGN)) {
-      const signedStatus = "You are " + (this.state.isSignedIn ? SIGN_IN_PAGE.label : SIGN_OUT_PAGE.label)
-      return <List list={[{ name: signedStatus, url: "", redirect: (noRedirect) => { noRedirect = "" } }]} style={ListStyle.MENU} />
+      // const signedStatus = "You are " + (this.state.isSignedIn ? SIGN_IN_PAGE.label : SIGN_OUT_PAGE.label)
+      // return <List list={[{ name: signedStatus, url: "", redirect: (noRedirect) => { noRedirect = "" } }]} style={ListStyle.MENU} />
+      return <List list={this.props.buttons} style={ListStyle.MENU} />;
     } else {
       return <List list={this.props.buttons} style={ListStyle.MENU} />;
     }
@@ -52,9 +55,8 @@ class Menu extends React.Component<RedirectButtonsProps, MenuState> {
     })
   }
   public redirect(url: string): void {
-    history.pushState("", "", url);
-    Storage.setItem(StorageKey.URL, url);
-    this.setState({ currentUrl: Storage.getItem(StorageKey.URL) })
+    Routing.redirect(url);
+    this.forceUpdate();
   }
   public pageRenderer(currentUrl: string): JSX.Element {
     if (currentUrl.includes(URL.ABOUT)) {
@@ -64,10 +66,10 @@ class Menu extends React.Component<RedirectButtonsProps, MenuState> {
       return this.bookingPages(currentUrl);
     }
     else if (currentUrl.includes(URL.HOME)) {
-      return this.homePages(currentUrl);
+      return <HomePage H1PImageList={HOME_PAGE} />
     }
     else if (currentUrl.includes(URL.PROFILE)) {
-      return this.profilePages(currentUrl);
+      return <ProfilePage/>;
     }
     else if (currentUrl.includes(URL.SIGN)) {
       return <SignPage key="0" />
@@ -88,29 +90,6 @@ class Menu extends React.Component<RedirectButtonsProps, MenuState> {
     return <p> MENU Booking page ERROR </p>;
 
   }
-  public homePages(url: string): JSX.Element {
-    if (url === MENU_BUTTONS_HOME[0].url) {
-      return <HomePage H1PImageList={HOME_PAGE} />
-    }
-    return <p> MENU Home ERROR </p>;
-
-  }
-  public profilePages(url: string): JSX.Element {
-    if (url === MENU_BUTTONS_PROFILE[0].url) {
-      return <p> ABOUT PAGE </p>
-    }
-    return <p> MENU Profile page ERROR </p>;
-
-  }
-  // public signPages(url: string): JSX.Element {
-  //   if (url === MENU_BUTTONS_SIGN[0].url || url === URL.SIGN) {
-  //     return <SignPage key="0" signInBox={SIGN_IN_PAGE} />
-  //   }
-  //   else if (url === MENU_BUTTONS_SIGN[1].url) {
-  //     return <SignPage key="1" signInBox={SIGN_UP_PAGE} />
-  //   }
-  //   return <p> MENU Sign page ERROR </p>;
-  // }
 }
 
 export default Menu;

@@ -16,7 +16,7 @@
     "sign_out_page_label": "Sign Out",
     "sign_up_page_label": "Sign Up",
     "sign_inup_stateNames": [
-        "userName",
-        "password"
+        "UserName",
+        "Password"
     ]
 }

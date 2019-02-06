@@ -17,9 +17,13 @@
   --menuWidth: 250px;
   --navBarHeight: 100px;
 
-  /* Margins */
-  --basicMargin: 20px;
-  --basicPadding: 20px;
+  /* Margins & Paddings */
+  --basicMargin: 15px;
+  --basicPadding: 15px;
+  /* Fonts */
+  --smallFont: 16px;
+  --mediumFont: 24px;
+  --largeFont: 36px
 }
 
 /* To remove any secret default values*/

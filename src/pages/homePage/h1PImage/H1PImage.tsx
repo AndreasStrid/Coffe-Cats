@@ -1,8 +1,8 @@
 import * as React from "react";
 import "./H1PImageStyle.css";
 
-class H1PImage extends React.Component<IH1P1ImageProps> {
-  constructor(props: IH1P1ImageProps) {
+class H1PImage extends React.Component<H1P1ImageProps> {
+  constructor(props: H1P1ImageProps) {
     super(props);
   }
 

@@ -27,7 +27,7 @@ class SignOutBox extends React.Component<SignedOutBoxProps, SignedOutBoxProps> {
     public handleClick(event: any) {
         const user: User = Storage.getItem(StorageKey.USER);
         user.logout()
-        Routing.reloadApplication(Storage.getItem(StorageKey.URL))
+        Routing.reloadBrowser();
     }
 }
 

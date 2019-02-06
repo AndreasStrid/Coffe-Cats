@@ -5,8 +5,9 @@ import Storage from "./Storage"
 import StorageKey from "./StorageKey";
 import ERROR from "src/content/messages/Errors"
 import SUCCESS from "src/content/messages/Successes"
+import UserState from './UserState'
 
-class User {
+class User implements UserState {
     public name: string;
     public money: number;
     public customerLevel: CustomerLevel;
@@ -32,12 +33,14 @@ class User {
     }
 
     public login(name: string, password: string): string {
+        console.log('user1: ', JSON.stringify(this))
         const token = login(name, password);
         if (token !== null) {
             console.log("decode token: ", decode(token));
             this.token = token;
             this.name = name;
             Storage.setItem(StorageKey.USER, this);
+            console.log('user2: ', JSON.stringify(this))
             return SUCCESS.LOGIN_PASSWORD;
         } else {
             return ERROR.LOGIN_PASSWORD;

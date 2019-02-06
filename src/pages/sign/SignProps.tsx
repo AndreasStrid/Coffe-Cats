@@ -1,5 +1,5 @@
 
-interface SignPageProps {
-    refreshPage: () => void
+interface SignPageState extends SignedInState {
+    isSignedUp: boolean;
 }
 

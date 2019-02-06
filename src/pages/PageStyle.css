@@ -1,4 +1,5 @@
 .contentGrid {
+
     grid-area: contentGrid;
     background: red;
     height: calc(100vh - var(--navBarHeight));

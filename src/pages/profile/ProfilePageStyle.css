@@ -1,0 +1,29 @@
+.profilePage {
+    background-color: var(--grey);
+    display: grid;
+    justify-self: center;
+  }
+  
+  .profilePage-container {
+      
+    display: grid;
+
+    padding: var(--basicPadding);
+    color: var(--light);
+    width: calc( 75vw - var(--menuWidth));   
+    line-height: calc(var(--mediumFont) - 1px); ;
+  }
+
+.profilePage-container .item {
+    display: grid;
+    grid-template-columns: 50% 50%;
+    width: calc( 75vw - var(--menuWidth));
+    word-wrap: break-word;
+}
+.profilePage-container .item h2 {
+    font-size: var(--mediumFont);
+}
+
+
+
+  
