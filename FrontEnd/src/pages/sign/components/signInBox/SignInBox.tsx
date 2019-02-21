@@ -72,7 +72,6 @@ class SignInBox extends React.Component<SignInBoxProps, SignInBoxState> {
     event.preventDefault();
     const user: User = Storage.getItem(StorageKey.USER);
     const result = await user.login(this.state.userName, this.state.password)
-    console.log("SignInBox result: ", result);
     this.setState({ loginMessage: result })
     if (result === SUCCESS.LOGIN_PASSWORD) {
       // sleep 1.5 seconds before rendering new state

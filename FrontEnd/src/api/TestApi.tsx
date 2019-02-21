@@ -4,6 +4,7 @@ import User from "src/types/User";
 import UserData from "src/content/testData/User_Data.json"
 import Product from "src/types/Product";
 import ProductList from "src/types/ProductList";
+import ERROR from "src/content/messages/Errors"
 
 
 import * as PRODUCT_A_IMAGE from "src/content/images/dev/cat-item-1.jpg";
@@ -27,7 +28,7 @@ async function login(name: string, password: string): Promise<User> { // cb: (da
                 resolve(new User(UserData.name, UserData.money, token, UserData.customerLevel));
             }
             else {
-                reject('error');
+                reject(ERROR.LOGIN_PASSWORD);
             }
         }, 1000);
     });

@@ -3,7 +3,7 @@ import { login } from "src/api/TestApi";
 // import { decode } from "jsonwebtoken";
 import Storage from "./Storage"
 import StorageKey from "./StorageKey";
-import ERROR from "src/content/messages/Errors"
+
 import SUCCESS from "src/content/messages/Successes"
 import UserState from './UserState'
 
@@ -36,12 +36,9 @@ class User implements UserState {
 
         return await login(name, password).then((user) => {
             Storage.setItem(StorageKey.USER, user);
-            console.log('succes User: ', JSON.stringify(user))
             return SUCCESS.LOGIN_PASSWORD;
         }).catch((error) => {
-            // Storage.setItem(StorageKey.PRODUCTS, error);
-            console.log('error User: ', error);
-            return ERROR.LOGIN_PASSWORD;
+            return error;
         });
     }
 
