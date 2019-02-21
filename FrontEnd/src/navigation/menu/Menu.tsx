@@ -4,24 +4,23 @@ import "./MenuStyle.css";
 import HomePage from "src/pages/homePage/HomePage";
 import { HOME_PAGE } from "src/content/Pages" // ABOUT_PAGE, BOOKING_PAGE, , PROFILE_PAGE,
 import { URL } from "src/content/Variables"
-import { MENU_BUTTONS_ABOUT, MENU_BUTTONS_BOOKING} from "src/content/RedirectButtons";
+import { MENU_BUTTONS_ABOUT, MENU_BUTTONS_BOOKING } from "src/content/RedirectButtons";
 // import { SIGN_IN_PAGE, SIGN_OUT_PAGE } from "src/content/Pages"
 import SignPage from "../../pages/sign/SignPage";
 import ListStyle from "src/types/ListStyle"
 import Storage from "src/types/Storage"
 import StorageKey from "src/types/StorageKey"
-import User from "src/types/User";
 import Routing from "../Routing";
 import ProfilePage from "src/pages/profile/ProfilePage";
+import UserService from "src/services/UserService";
 
 class Menu extends React.Component<RedirectButtonsProps, SignedInState> {
 
   constructor(props: RedirectButtonsProps) {
     super(props);
-    const user: User = Storage.getItem(StorageKey.USER);
 
     this.state = {
-      isSignedIn: user.isSignedIn()
+      isSignedIn: UserService.isSignedIn()
     }
     this.redirect = this.redirect.bind(this);
   }
@@ -33,7 +32,7 @@ class Menu extends React.Component<RedirectButtonsProps, SignedInState> {
         {this.displayMenu(Storage.getItem(StorageKey.URL))}
         <div className="contentGrid" >
           {this.pageRenderer(Storage.getItem(StorageKey.URL))}
-          
+
         </div>
       </div>
     );
@@ -69,7 +68,7 @@ class Menu extends React.Component<RedirectButtonsProps, SignedInState> {
       return <HomePage H1PImageList={HOME_PAGE} />
     }
     else if (currentUrl.includes(URL.PROFILE)) {
-      return <ProfilePage/>;
+      return <ProfilePage />;
     }
     else if (currentUrl.includes(URL.SIGN)) {
       return <SignPage key="0" />

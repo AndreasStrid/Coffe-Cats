@@ -1,9 +1,7 @@
 import * as React from "react";
-import StorageKey from "src/types/StorageKey";
-import User from "src/types/User";
-import Storage from "src/types/Storage";
 import Routing from "src/navigation/Routing";
 import SUCCESS from "src/content/messages/Successes"
+import UserService from "src/services/UserService";
 
 class SignInBox extends React.Component<SignInBoxProps, SignInBoxState> {
   constructor(props: any) {
@@ -70,8 +68,7 @@ class SignInBox extends React.Component<SignInBoxProps, SignInBoxState> {
 
   public async handleSubmit(event: React.FormEvent) {
     event.preventDefault();
-    const user: User = Storage.getItem(StorageKey.USER);
-    const result = await user.login(this.state.userName, this.state.password)
+    const result = await UserService.login(this.state.userName, this.state.password)
     this.setState({ loginMessage: result })
     if (result === SUCCESS.LOGIN_PASSWORD) {
       // sleep 1.5 seconds before rendering new state

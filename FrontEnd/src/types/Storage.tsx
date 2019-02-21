@@ -1,9 +1,9 @@
 import User from "./User";
 import StorageKey from "./StorageKey";
-import CustomerLevel from "./CustomerLevel";
 import ProductList from "./ProductList";
+import UserService from "src/services/UserService";
 
-const user = new User("", 0, null, CustomerLevel.NULL);
+const user: User = UserService.cleanUser();
 const productList = new ProductList([]);
 let language = null;
 let url = null;

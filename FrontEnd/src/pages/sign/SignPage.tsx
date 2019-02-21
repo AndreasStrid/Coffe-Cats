@@ -2,20 +2,17 @@ import * as React from "react";
 import "./SignPageStyle.css";
 import SignInBox from "./components/signInBox/SignInBox";
 import { SIGN_IN_PAGE, SIGN_UP_PAGE, SIGN_OUT_PAGE } from "src/content/Pages"
-import Storage from "src/types/Storage"
-import StorageKey from "src/types/StorageKey"
-import User from "src/types/User";
+
 import SignOutBox from "./components/signOutBox/SignOutBox";
+import UserService from "src/services/UserService";
 
 class SignPage extends React.Component<{}, SignPageState> {
   constructor(props: any) {
     super(props);
     this.switchSignBox = this.switchSignBox.bind(this);
 
-    const user: User = Storage.getItem(StorageKey.USER)
-
     this.state = {
-      isSignedIn: user.isSignedIn(),
+      isSignedIn: UserService.isSignedIn(),
       isSignedUp: false
     }
   }

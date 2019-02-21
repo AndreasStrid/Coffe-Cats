@@ -1,8 +1,6 @@
 import * as React from "react";
-import StorageKey from "src/types/StorageKey";
-import User from "src/types/User";
-import Storage from "src/types/Storage";
 import Routing from "src/navigation/Routing";
+import UserService from "src/services/UserService";
 
 class SignOutBox extends React.Component<SignedOutBoxProps, SignedOutBoxProps> {
 
@@ -25,8 +23,7 @@ class SignOutBox extends React.Component<SignedOutBoxProps, SignedOutBoxProps> {
     }
 
     public handleClick(event: any) {
-        const user: User = Storage.getItem(StorageKey.USER);
-        user.logout()
+        UserService.logout()
         Routing.reloadBrowser();
     }
 }

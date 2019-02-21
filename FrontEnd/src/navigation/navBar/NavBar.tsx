@@ -7,19 +7,17 @@ import ListStyle from "src/types/ListStyle";
 import Storage from "src/types/Storage"
 import StorageKey from "src/types/StorageKey"
 import Routing from "src/navigation/Routing";
-import User from "src/types/User";
 import { SIGN_OUT_PAGE, SIGN_IN_PAGE } from "src/content/Pages";
 import RedirectButton from "../redirectButton/RedirectButton";
+import UserService from "src/services/UserService";
 
 class Navbar extends React.Component<NavBarProps, SignedInState> {
   constructor(props: NavBarProps) {
     super(props);
     this.redirect = this.redirect.bind(this);
 
-    const user: User = Storage.getItem(StorageKey.USER);
-
     this.state = {
-      isSignedIn: user.isSignedIn()
+      isSignedIn: UserService.isSignedIn()
     }
   }
 
@@ -29,7 +27,7 @@ class Navbar extends React.Component<NavBarProps, SignedInState> {
 
     const NavBarButtons: RedirectButtonProps[] = [];
     NAVBAR_BUTTONS.forEach((element) => { NavBarButtons.push(element); })
-    if(!this.state.isSignedIn){ NavBarButtons.splice(3,1)  }
+    if (!this.state.isSignedIn) { NavBarButtons.splice(3, 1) }
 
     return (
       <div className="navBarGrid">

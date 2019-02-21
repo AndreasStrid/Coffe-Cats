@@ -16,20 +16,17 @@ class HomePage extends React.Component<HomePageProps> {
       </div>
     );
   }
-  public createHomePageComponents(
-    components: H1P1ImageProps[]
-  ): JSX.Element {
-    const H1PImageElements = components.map(
-      (component: H1P1ImageProps) => {
-        return (
-          <H1PImage
-            h1={component.h1}
-            p={component.p}
-            img={component.img}
-            key={component.h1}
-          />
-        );
-      }
+  public createHomePageComponents(components: H1P1ImageProps[]): JSX.Element {
+    const H1PImageElements = components.map((component: H1P1ImageProps) => {
+      return (
+        <H1PImage
+          h1={component.h1}
+          p={component.p}
+          img={component.img}
+          key={component.h1}
+        />
+      );
+    }
     );
 
     return <ul> {H1PImageElements} </ul>;

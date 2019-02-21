@@ -1,10 +1,8 @@
 
 import Storage from "./Storage"
 import StorageKey from "./StorageKey"
-import ERROR from "src/content/messages/Errors"
 import { getAllProducts } from "../api/TestApi"
 import Product from "./Product";
-
 
 class ProductList implements ProductListState {
     public products: Product[];
@@ -13,28 +11,23 @@ class ProductList implements ProductListState {
         this.products = products;
     }
 
-    public getAllProducts(token: string): string {
+    public async getAllProducts(token: string): Promise<string> {
 
-        let result = '';
-        const apa = async () => {
-            await getAllProducts(token).then((productList) => {
-                Storage.setItem(StorageKey.PRODUCTS, productList);
-                result = 'true';
-            }).catch((error) => {
-                // Storage.setItem(StorageKey.PRODUCTS, error);
-                result = ERROR.PRODUCTS_NOT_FOUND;
-            });
-        }
-        console.log("getAllProducts: ", apa)
-        return result;
+        return await getAllProducts(token).then((productList) => {
+            Storage.setItem(StorageKey.PRODUCTS, productList);
+            return 'true';
+        }).catch((error) => {
+            return error;
+        });
     }
 
-    public updateProducts() {
-        if (Storage.getItem(StorageKey.PRODUCTS) === null) {
-            if (this.getAllProducts(Storage.getItem(StorageKey.USER).token) !== 'true') {
-                console.log("hej: ")
-            }
+    public async updateProducts(): Promise<string> {
+        const products = Storage.getItem(StorageKey.PRODUCTS);
+        if (products.productList.length === 0) {
+            return await this.getAllProducts(Storage.getItem(StorageKey.USER).token).then((result) => { return result; })
         }
+        return new Promise<string>((reject) => { reject('Already fetched') }).catch(() => { return "Alredy fetched" })
+
     }
 
 }

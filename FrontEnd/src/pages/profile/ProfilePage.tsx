@@ -2,7 +2,7 @@ import * as React from "react";
 import User from "src/types/User";
 import Storage from "src/types/Storage"
 import StorageKey from "src/types/StorageKey"
-import UserState from "src/types/UserState";
+import UserState from "src/types/User";
 import "./ProfilePageStyle.css";
 
 class ProfilePage extends React.Component<{}, UserState> {
@@ -37,7 +37,7 @@ class ProfilePage extends React.Component<{}, UserState> {
                     <div> <h2>CustomerLevel:</h2> </div>
                     <div>  <p> {this.state.customerLevel} </p> </div>
                 </div>
-                
+
                 <div className="profilePage-container item">
                     <div> <h2>Token: </h2></div>
                     <div><p>{`Token${this.state.token}`} </p> </div>
