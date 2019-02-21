@@ -23,7 +23,7 @@ class Routing {
     public static redirect(url: string): void {
         history.pushState("", "", url);
         Storage.setItem(StorageKey.URL, url);
-      }
+    }
 }
 
 export default Routing;

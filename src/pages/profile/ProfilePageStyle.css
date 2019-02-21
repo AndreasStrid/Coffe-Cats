@@ -1,13 +1,11 @@
 .profilePage {
-    background-color: var(--grey);
     display: grid;
     justify-self: center;
+    background-color: var(--grey);
   }
   
   .profilePage-container {
-      
     display: grid;
-
     padding: var(--basicPadding);
     color: var(--light);
     width: calc( 75vw - var(--menuWidth));   

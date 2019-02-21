@@ -1,0 +1,6 @@
+
+
+interface ProductListState {
+    products: ProductState[];
+}
+

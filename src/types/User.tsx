@@ -1,6 +1,6 @@
 import CustomerLevel from "./CustomerLevel"
 import { login } from "src/api/TestApi";
-import { decode } from "jsonwebtoken";
+// import { decode } from "jsonwebtoken";
 import Storage from "./Storage"
 import StorageKey from "./StorageKey";
 import ERROR from "src/content/messages/Errors"
@@ -32,20 +32,19 @@ class User implements UserState {
         this.token = data;
     }
 
-    public login(name: string, password: string): string {
-        console.log('user1: ', JSON.stringify(this))
-        const token = login(name, password);
-        if (token !== null) {
-            console.log("decode token: ", decode(token));
-            this.token = token;
-            this.name = name;
-            Storage.setItem(StorageKey.USER, this);
-            console.log('user2: ', JSON.stringify(this))
+    public async login(name: string, password: string): Promise<string> {
+
+        return await login(name, password).then((user) => {
+            Storage.setItem(StorageKey.USER, user);
+            console.log('succes User: ', JSON.stringify(user))
             return SUCCESS.LOGIN_PASSWORD;
-        } else {
+        }).catch((error) => {
+            // Storage.setItem(StorageKey.PRODUCTS, error);
+            console.log('error User: ', error);
             return ERROR.LOGIN_PASSWORD;
-        }
+        });
     }
+
     public logout() {
         this.clean();
         Storage.setItem(StorageKey.USER, this);

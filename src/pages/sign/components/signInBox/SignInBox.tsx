@@ -3,6 +3,7 @@ import StorageKey from "src/types/StorageKey";
 import User from "src/types/User";
 import Storage from "src/types/Storage";
 import Routing from "src/navigation/Routing";
+import SUCCESS from "src/content/messages/Successes"
 
 class SignInBox extends React.Component<SignInBoxProps, SignInBoxState> {
   constructor(props: any) {
@@ -39,7 +40,7 @@ class SignInBox extends React.Component<SignInBoxProps, SignInBoxState> {
           />
         </div>
 
-      <div>
+        <div>
           <label> {this.props.stateNames[1]}</label>
         </div>
         <div>
@@ -70,10 +71,14 @@ class SignInBox extends React.Component<SignInBoxProps, SignInBoxState> {
   public async handleSubmit(event: React.FormEvent) {
     event.preventDefault();
     const user: User = Storage.getItem(StorageKey.USER);
-    this.setState({ loginMessage: user.login(this.state.userName, this.state.password) })
-    // sleep 1.5 seconds before rendering new state
-    await new Promise(resolve => setTimeout(resolve, 1500));
-    Routing.reloadBrowser()
+    const result = await user.login(this.state.userName, this.state.password)
+    console.log("SignInBox result: ", result);
+    this.setState({ loginMessage: result })
+    if (result === SUCCESS.LOGIN_PASSWORD) {
+      // sleep 1.5 seconds before rendering new state
+      await new Promise(resolve => setTimeout(resolve, 1500));
+      Routing.reloadBrowser()
+    }
   }
 
 
