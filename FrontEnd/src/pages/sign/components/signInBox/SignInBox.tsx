@@ -11,9 +11,6 @@ class SignInBox extends React.Component<SignInBoxProps, SignInBoxState> {
       userName: "",
       loginMessage: "",
     };
-    console.log("SignInBox props: ", JSON.stringify(this.props));
-    console.log("SignInBox state: ", JSON.stringify(this.state));
-
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleOnChange = this.handleOnChange.bind(this);
   }

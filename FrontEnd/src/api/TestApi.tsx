@@ -8,6 +8,7 @@ import ProductList from "src/types/ProductList";
 import ERROR from "src/content/messages/Errors"
 
 const secretKey = "secretKey"
+const userPassword = "lapa"
 const User: User = UserData;
 const ProductList: ProductList = ProductsData;
 
@@ -15,7 +16,7 @@ async function login(name: string, password: string): Promise<User> { // cb: (da
 
     return await new Promise<User>((resolve, reject) => {
         setTimeout(() => {
-            if (password === UserData.password && name === User.name) {
+            if (password === userPassword && name === User.name) {
                 User.token = sign({ name, password }, secretKey);
                 resolve(User);
             }

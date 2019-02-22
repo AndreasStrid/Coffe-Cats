@@ -29,7 +29,8 @@ class UserService {
     }
 
     public static isSignedIn(caller: string): boolean {
-        if (Storage.getItem(`${caller} -> isSignedIn`, StorageKey.USER).token !== null) {
+        console.log(' token ', Storage.getItem(`${caller} -> isSignedIn`, StorageKey.USER).token);
+        if (Storage.getItem(`${caller} -> isSignedIn`, StorageKey.USER).token !== "") {
             return true;
         } else {
             return false;

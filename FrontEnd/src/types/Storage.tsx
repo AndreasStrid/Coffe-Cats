@@ -20,13 +20,9 @@ const Storage = {
     getItem(caller: string, key: StorageKey): any {
         if (key === StorageKey.USER) {
             // @ts-ignore
-            const userValues: User = localStorage.getItem(StorageKey.USER);
-            user.name = userValues.name;
-            user.money = userValues.money;
-            user.token = userValues.token;
-            user.customerLevel = userValues.customerLevel;
-            Log.debug(DEBUG.STORAGE, caller, GET_ITEM, user);
-            return user;
+            const storageUser: User = JSON.parse(localStorage.getItem(StorageKey.USER));
+            Log.debug(DEBUG.STORAGE, caller, GET_ITEM, storageUser);
+            return storageUser;
         }
         else if (key === StorageKey.LANGUAGE) {
             language = localStorage.getItem(StorageKey.LANGUAGE);
@@ -40,15 +36,15 @@ const Storage = {
         }
         else if (key === StorageKey.PRODUCTS) {
             // @ts-ignore
-            const productsValues: ProductList = localStorage.getItem(StorageKey.PRODUCTS);
-            Log.debug(DEBUG.STORAGE, caller, GET_ITEM, productsValues);
-            return productsValues;
+            const storageProducts: ProductList = JSON.parse(localStorage.getItem(StorageKey.PRODUCTS));
+            Log.debug(DEBUG.STORAGE, caller, GET_ITEM, storageProducts);
+            return storageProducts;
         }
 
     },
     setItem(caller: string, key: StorageKey, data: any) {
         if (key === StorageKey.USER) {
-            localStorage.setItem(StorageKey.USER, data);
+            localStorage.setItem(StorageKey.USER, JSON.stringify(data));
             Log.debug(DEBUG.STORAGE, caller, SET_ITEM, data);
         }
         else if (key === StorageKey.LANGUAGE) {
@@ -60,7 +56,7 @@ const Storage = {
             Log.debug(DEBUG.STORAGE && DEBUG.ROUTING, caller, SET_ITEM, data);
         }
         else if (key === StorageKey.PRODUCTS) {
-            localStorage.setItem(StorageKey.PRODUCTS, data);
+            localStorage.setItem(StorageKey.PRODUCTS, JSON.stringify(data));
             Log.debug(DEBUG.STORAGE, caller, SET_ITEM, data);
         }
     },
