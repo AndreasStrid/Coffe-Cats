@@ -4,7 +4,7 @@ import SUCCESS from "src/content/messages/Successes"
 import UserService from "src/services/UserService";
 
 class SignInBox extends React.Component<SignInBoxProps, SignInBoxState> {
-  constructor(props: any) {
+  constructor(props: SignInBoxProps) {
     super(props);
     this.state = {
       password: "",
@@ -68,7 +68,7 @@ class SignInBox extends React.Component<SignInBoxProps, SignInBoxState> {
 
   public async handleSubmit(event: React.FormEvent) {
     event.preventDefault();
-    const result = await UserService.login(this.state.userName, this.state.password)
+    const result = await UserService.login(SignInBox.name, this.state.userName, this.state.password)
     this.setState({ loginMessage: result })
     if (result === SUCCESS.LOGIN_PASSWORD) {
       // sleep 1.5 seconds before rendering new state

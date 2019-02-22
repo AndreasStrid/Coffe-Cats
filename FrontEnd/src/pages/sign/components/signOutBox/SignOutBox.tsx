@@ -23,7 +23,7 @@ class SignOutBox extends React.Component<SignedOutBoxProps, SignedOutBoxProps> {
     }
 
     public handleClick(event: any) {
-        UserService.logout()
+        UserService.logout(SignOutBox.name)
         Routing.reloadBrowser();
     }
 }

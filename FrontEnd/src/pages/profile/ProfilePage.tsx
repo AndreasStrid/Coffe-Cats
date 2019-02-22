@@ -1,15 +1,14 @@
 import * as React from "react";
 import User from "src/types/User";
-import Storage from "src/types/Storage"
-import StorageKey from "src/types/StorageKey"
 import UserState from "src/types/User";
 import "./ProfilePageStyle.css";
+import UserService from "src/services/UserService";
 
 class ProfilePage extends React.Component<{}, UserState> {
 
     constructor() {
         super({});
-        const user: User = Storage.getItem(StorageKey.USER);
+        const user: User = UserService.getUser(ProfilePage.name);
         this.state = {
             name: user.name,
             money: user.money,

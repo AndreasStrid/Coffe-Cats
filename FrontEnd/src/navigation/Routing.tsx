@@ -18,11 +18,14 @@ class Routing {
     }
 
     public static reloadBrowser(): void {
-        document.location.href = Storage.getItem(StorageKey.URL);
+        document.location.href = Storage.getItem('reloadBrowser', StorageKey.URL);
+    }
+    public static getCurrentUrl(): string {
+        return Storage.getItem('getCurrentUrl', StorageKey.URL);
     }
     public static redirect(url: string): void {
         history.pushState("", "", url);
-        Storage.setItem(StorageKey.URL, url);
+        Storage.setItem('redirect', StorageKey.URL, url);
     }
 }
 

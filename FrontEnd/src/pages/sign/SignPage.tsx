@@ -12,7 +12,7 @@ class SignPage extends React.Component<{}, SignPageState> {
     this.switchSignBox = this.switchSignBox.bind(this);
 
     this.state = {
-      isSignedIn: UserService.isSignedIn(),
+      isSignedIn: UserService.isSignedIn(SignPage.name),
       isSignedUp: false
     }
   }

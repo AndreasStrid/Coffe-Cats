@@ -7,26 +7,29 @@ import SUCCESS from "src/content/messages/Successes";
 
 class UserService {
 
+    public static getUser(caller: string): User {
+        return Storage.getItem(`${caller} -> getUser`, StorageKey.USER);
+    }
     public static cleanUser(): User {
-        return { name: "", money: 0, customerLevel: CustomerLevel.NULL, token: null, }
+        return { name: "", money: 0, customerLevel: CustomerLevel.NULL, token: '', }
     }
 
-    public static async login(name: string, password: string): Promise<string> {
+    public static async login(caller: string, name: string, password: string): Promise<string> {
 
         return await login(name, password).then((user) => {
-            Storage.setItem(StorageKey.USER, user);
+            Storage.setItem(`${caller} -> login`, StorageKey.USER, user);
             return SUCCESS.LOGIN_PASSWORD;
         }).catch((error) => {
             return error;
         });
     }
 
-    public static logout() {
-        Storage.setItem(StorageKey.USER, this.cleanUser());
+    public static logout(caller: string) {
+        Storage.setItem(`${caller} -> logout`, StorageKey.USER, this.cleanUser());
     }
 
-    public static isSignedIn(): boolean {
-        if (Storage.getItem(StorageKey.USER).token !== null) {
+    public static isSignedIn(caller: string): boolean {
+        if (Storage.getItem(`${caller} -> isSignedIn`, StorageKey.USER).token !== null) {
             return true;
         } else {
             return false;
@@ -34,7 +37,7 @@ class UserService {
     }
 
     public static isAuthorized(customerLevel: CustomerLevel): boolean {
-        if (Storage.getItem(StorageKey.USER).customerLevel >= customerLevel) {
+        if (Storage.getItem(UserService.isAuthorized.name, StorageKey.USER).customerLevel >= customerLevel) {
             return true;
         } else {
             return false;

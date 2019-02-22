@@ -1,28 +1,6 @@
 import { URL } from "./Variables";
 import language from "./LoadLanguage"
 
-//  {
-//   method: "GET", credentials: 'include', headers: {
-//     'Content-Type': 'application/json'
-//   }
-// }
-// "https://learnwebcode.github.io/json-example/animals-1.json"
-
-// const LANGUAGE = fetch("http://192.168.110.176:3000/apa2.json", { method: "GET", mode: 'no-cors' })
-//   .then((response) => {
-//     console.log("fetching: ", `src/content/languages/${Storage.getItem(StorageKey.LANGUAGE)}`)
-//     console.log("response ", response)
-//     const responseCopy = response.clone();
-//     const data = responseCopy.json()
-//     console.log("response.json ", data)
-//     return data;
-//   })
-//   .then((myJson) => {
-//     console.log(JSON.stringify(myJson));
-//   });
-
-console.log(language)
-
 const notInitializedRedirect = (url: string) => {
   url = "";
 };

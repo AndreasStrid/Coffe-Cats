@@ -1,3 +1,0 @@
-interface RouteProps {
-    currentUrl: string
-}

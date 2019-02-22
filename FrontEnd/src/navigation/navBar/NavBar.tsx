@@ -4,8 +4,6 @@ import List from "src/components/list/List";
 import { MENU_BUTTONS_ABOUT, MENU_BUTTONS_BOOKING, MENU_BUTTONS_HOME, MENU_BUTTONS_PROFILE, NAVBAR_BUTTONS } from "src/content/RedirectButtons"
 import Menu from "../menu/Menu";
 import ListStyle from "src/types/ListStyle";
-import Storage from "src/types/Storage"
-import StorageKey from "src/types/StorageKey"
 import Routing from "src/navigation/Routing";
 import { SIGN_OUT_PAGE, SIGN_IN_PAGE } from "src/content/Pages";
 import RedirectButton from "../redirectButton/RedirectButton";
@@ -17,13 +15,13 @@ class Navbar extends React.Component<NavBarProps, SignedInState> {
     this.redirect = this.redirect.bind(this);
 
     this.state = {
-      isSignedIn: UserService.isSignedIn()
+      isSignedIn: UserService.isSignedIn(Navbar.name)
     }
   }
 
   public render() {
     this.setRedirect()
-    const menu = this.menuRenderer(Storage.getItem(StorageKey.URL));
+    const menu = this.menuRenderer(Routing.getCurrentUrl());
 
     const NavBarButtons: RedirectButtonProps[] = [];
     NAVBAR_BUTTONS.forEach((element) => { NavBarButtons.push(element); })
@@ -54,7 +52,6 @@ class Navbar extends React.Component<NavBarProps, SignedInState> {
   }
 
   public menuRenderer(currentUrl: string): JSX.Element {
-    console.log(" NavBar Rendered ", currentUrl)
     if (currentUrl.includes(NAVBAR_BUTTONS[0].url)) {
       return <Menu key="0" buttons={MENU_BUTTONS_ABOUT} />
     }

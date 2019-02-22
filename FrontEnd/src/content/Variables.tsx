@@ -32,10 +32,16 @@ const API_URL = {
   loginIn: "/login"
 };
 
+const DEBUG = {
+  STORAGE: true,
+  ROUTING: false,
+};
+
 
 export {
   API_URL,
   IMAGES,
   URL,
-  URL_ARRAY
+  URL_ARRAY,
+  DEBUG
 };

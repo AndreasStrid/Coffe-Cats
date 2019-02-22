@@ -5,14 +5,12 @@ import HomePage from "src/pages/homePage/HomePage";
 import { HOME_PAGE } from "src/content/Pages" // ABOUT_PAGE, BOOKING_PAGE, , PROFILE_PAGE,
 import { URL } from "src/content/Variables"
 import { MENU_BUTTONS_ABOUT, MENU_BUTTONS_BOOKING } from "src/content/RedirectButtons";
-// import { SIGN_IN_PAGE, SIGN_OUT_PAGE } from "src/content/Pages"
 import SignPage from "../../pages/sign/SignPage";
 import ListStyle from "src/types/ListStyle"
-import Storage from "src/types/Storage"
-import StorageKey from "src/types/StorageKey"
 import Routing from "../Routing";
 import ProfilePage from "src/pages/profile/ProfilePage";
 import UserService from "src/services/UserService";
+import ProductPage from "src/pages/product/ProductPage";
 
 class Menu extends React.Component<RedirectButtonsProps, SignedInState> {
 
@@ -20,19 +18,17 @@ class Menu extends React.Component<RedirectButtonsProps, SignedInState> {
     super(props);
 
     this.state = {
-      isSignedIn: UserService.isSignedIn()
+      isSignedIn: UserService.isSignedIn(Menu.name)
     }
     this.redirect = this.redirect.bind(this);
   }
   public render() {
     this.setRedirect()
-
     return (
       <div className="menuGrid">
-        {this.displayMenu(Storage.getItem(StorageKey.URL))}
+        {this.displayMenu(Routing.getCurrentUrl())}
         <div className="contentGrid" >
-          {this.pageRenderer(Storage.getItem(StorageKey.URL))}
-
+          {this.pageRenderer(Routing.getCurrentUrl())}
         </div>
       </div>
     );
@@ -62,7 +58,7 @@ class Menu extends React.Component<RedirectButtonsProps, SignedInState> {
       return this.aboutPages(currentUrl);
     }
     else if (currentUrl.includes(URL.BOOKING)) {
-      return this.bookingPages(currentUrl);
+      return <ProductPage />
     }
     else if (currentUrl.includes(URL.HOME)) {
       return <HomePage H1PImageList={HOME_PAGE} />

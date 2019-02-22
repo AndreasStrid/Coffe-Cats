@@ -2,68 +2,85 @@ import User from "./User";
 import StorageKey from "./StorageKey";
 import ProductList from "./ProductList";
 import UserService from "src/services/UserService";
+import ProductService from "src/services/ProductService";
+import Log from "./Log";
+import { DEBUG } from "src/content/Variables"
 
 const user: User = UserService.cleanUser();
-const productList = new ProductList([]);
+const productList: ProductList = ProductService.cleanProductList();
 let language = null;
 let url = null;
 
+const GET_ITEM = 'getItem';
+const SET_ITEM = 'setItem';
+const SET_OBJECTS = 'setObjects'
+
 const Storage = {
 
-    getItem(key: StorageKey): any {
+    getItem(caller: string, key: StorageKey): any {
         if (key === StorageKey.USER) {
             // @ts-ignore
-            const userValues: User = JSON.parse(localStorage.getItem(StorageKey.USER))
+            const userValues: User = localStorage.getItem(StorageKey.USER);
             user.name = userValues.name;
             user.money = userValues.money;
             user.token = userValues.token;
             user.customerLevel = userValues.customerLevel;
+            Log.debug(DEBUG.STORAGE, caller, GET_ITEM, user);
             return user;
         }
         else if (key === StorageKey.LANGUAGE) {
-            language = localStorage.getItem(StorageKey.LANGUAGE)
+            language = localStorage.getItem(StorageKey.LANGUAGE);
+            Log.debug(DEBUG.STORAGE, caller, GET_ITEM, language);
             return language;
         }
         else if (key === StorageKey.URL) {
-            url = localStorage.getItem(StorageKey.URL)
+            url = localStorage.getItem(StorageKey.URL);
+            Log.debug(DEBUG.STORAGE && DEBUG.ROUTING, caller, GET_ITEM, url);
             return url;
         }
         else if (key === StorageKey.PRODUCTS) {
             // @ts-ignore
-            const productsValues: ProductList = JSON.parse(localStorage.getItem(StorageKey.PRODUCTS))
-            console.log('productsValues: ', JSON.stringify(productsValues));
-            return productList;
+            const productsValues: ProductList = localStorage.getItem(StorageKey.PRODUCTS);
+            Log.debug(DEBUG.STORAGE, caller, GET_ITEM, productsValues);
+            return productsValues;
         }
 
     },
-    setItem(key: StorageKey, data: any) {
+    setItem(caller: string, key: StorageKey, data: any) {
         if (key === StorageKey.USER) {
-            localStorage.setItem(StorageKey.USER, JSON.stringify(data));
+            localStorage.setItem(StorageKey.USER, data);
+            Log.debug(DEBUG.STORAGE, caller, SET_ITEM, data);
         }
         else if (key === StorageKey.LANGUAGE) {
             localStorage.setItem(StorageKey.LANGUAGE, data);
+            Log.debug(DEBUG.STORAGE, caller, SET_ITEM, data);
         }
         else if (key === StorageKey.URL) {
             localStorage.setItem(StorageKey.URL, data);
+            Log.debug(DEBUG.STORAGE && DEBUG.ROUTING, caller, SET_ITEM, data);
         }
         else if (key === StorageKey.PRODUCTS) {
-            localStorage.setItem(StorageKey.PRODUCTS, JSON.stringify(data));
+            localStorage.setItem(StorageKey.PRODUCTS, data);
+            Log.debug(DEBUG.STORAGE, caller, SET_ITEM, data);
         }
     },
     setObjects() {
         if (localStorage.getItem(StorageKey.USER) === null) {
-            console.log("APP New user is set")
             localStorage.setItem(StorageKey.USER, JSON.stringify(user));
+            Log.debug(DEBUG.STORAGE, 'Storage', SET_OBJECTS, user);
         }
         if (localStorage.getItem(StorageKey.PRODUCTS) === null) {
             localStorage.setItem(StorageKey.PRODUCTS, JSON.stringify(productList));
+            Log.debug(DEBUG.STORAGE, 'Storage', SET_OBJECTS, productList);
         }
         if (localStorage.getItem(StorageKey.LANGUAGE) === null) {
             localStorage.setItem(StorageKey.LANGUAGE, "eng.json");
+            Log.debug(DEBUG.STORAGE, 'Storage', SET_OBJECTS, "eng.json");
         }
         if (localStorage.getItem(StorageKey.URL) === null) {
             // @ts-ignore
             localStorage.setItem(StorageKey.URL, document.location.pathname);
+            Log.debug(DEBUG.STORAGE, 'Storage', SET_OBJECTS, document.location.pathname);
         }
     }
 }
